@@ -87,7 +87,7 @@
 <meta property="og:description" content="开发规范问题编码统一utf-8 命名规范知名晓义 接口及实现类foxOperationService //接口foxOperationServiceImpl//实现类 测试类存放路径：src下与main同级别的test目录下包名：与需要测试的类相同 异常处理采用统一错误枚举类事务回滚需要throw出异常架构统一项目结构 指定工具类使用问题日志使用logback日志打印一律接入日志系统，不允许控制台">
 <meta property="og:image" content="http://onaqzli6n.bkt.clouddn.com/15083154685149.jpg">
 <meta property="og:image" content="http://onaqzli6n.bkt.clouddn.com/15083152558816.jpg">
-<meta property="og:updated_time" content="2017-10-20T09:36:26.000Z">
+<meta property="og:updated_time" content="2017-10-21T08:26:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="开发规范">
 <meta name="twitter:description" content="开发规范问题编码统一utf-8 命名规范知名晓义 接口及实现类foxOperationService //接口foxOperationServiceImpl//实现类 测试类存放路径：src下与main同级别的test目录下包名：与需要测试的类相同 异常处理采用统一错误枚举类事务回滚需要throw出异常架构统一项目结构 指定工具类使用问题日志使用logback日志打印一律接入日志系统，不允许控制台">
@@ -313,11 +313,7 @@ Dian.com Inc.
 Copyright (c) 2004-2017 All Rights Reserved.
 */</code></p>
 <h3 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h3><h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><h2 id="单元测试"><a href="#单元测试" class="headerlink" title="单元测试"></a>单元测试</h2><h3 id="统一错误码"><a href="#统一错误码" class="headerlink" title="统一错误码"></a>统一错误码</h3><h3 id="文件结构"><a href="#文件结构" class="headerlink" title="文件结构"></a>文件结构</h3><h2 id="数据库开发"><a href="#数据库开发" class="headerlink" title="数据库开发"></a>数据库开发</h2><h3 id="所有查询条件应考虑索引"><a href="#所有查询条件应考虑索引" class="headerlink" title="所有查询条件应考虑索引"></a>所有查询条件应考虑索引</h3><h3 id="数据库表名下划线"><a href="#数据库表名下划线" class="headerlink" title="数据库表名下划线"></a>数据库表名下划线</h3><h3 id="所有表均有CU字段"><a href="#所有表均有CU字段" class="headerlink" title="所有表均有CU字段"></a>所有表均有CU字段</h3><h3 id="所有字段均由应用程序生成，不能直接交由数据库"><a href="#所有字段均由应用程序生成，不能直接交由数据库" class="headerlink" title="所有字段均由应用程序生成，不能直接交由数据库"></a>所有字段均由应用程序生成，不能直接交由数据库</h3><h3 id="初始化数据必须有默认值"><a href="#初始化数据必须有默认值" class="headerlink" title="初始化数据必须有默认值"></a>初始化数据必须有默认值</h3><h2 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h2><p>统一工具类</p>
-<h3 id="属性工具采用spring的properties工具"><a href="#属性工具采用spring的properties工具" class="headerlink" title="属性工具采用spring的properties工具"></a>属性工具采用spring的<code>properties</code>工具</h3><h3 id="集合类统一使用Guava操作"><a href="#集合类统一使用Guava操作" class="headerlink" title="集合类统一使用Guava操作"></a>集合类统一使用<code>Guava</code>操作</h3><h2 id="maven规范"><a href="#maven规范" class="headerlink" title="maven规范"></a>maven规范</h2><h3 id="上传代码库前务必解决冲突问题"><a href="#上传代码库前务必解决冲突问题" class="headerlink" title="上传代码库前务必解决冲突问题"></a>上传代码库前务必解决冲突问题</h3><h2 id="版本规定"><a href="#版本规定" class="headerlink" title="版本规定"></a>版本规定</h2><p>`<gson.version>2.8.0</gson.version></p>
-<p><fastjson.version>1.2.28</fastjson.version></p>
-<p><guava.version>19.0</guava.version></p>
-<p><slf4j.version>1.7.14</slf4j.version></p>
-<p><spring.version>4.2.6.RELEASE</spring.version>`</p>
+<h3 id="属性工具采用spring的properties工具"><a href="#属性工具采用spring的properties工具" class="headerlink" title="属性工具采用spring的properties工具"></a>属性工具采用spring的<code>properties</code>工具</h3><h3 id="集合类统一使用Guava操作"><a href="#集合类统一使用Guava操作" class="headerlink" title="集合类统一使用Guava操作"></a>集合类统一使用<code>Guava</code>操作</h3><h2 id="maven规范"><a href="#maven规范" class="headerlink" title="maven规范"></a>maven规范</h2><h3 id="上传代码库前务必解决冲突问题"><a href="#上传代码库前务必解决冲突问题" class="headerlink" title="上传代码库前务必解决冲突问题"></a>上传代码库前务必解决冲突问题</h3><h2 id="版本规定"><a href="#版本规定" class="headerlink" title="版本规定"></a>版本规定</h2><p><code>&lt;gson.version&gt;2.8.0&lt;/gson.version&gt;</code><br><code>&lt;fastJson.version&gt;1.2.28&lt;/fastJson.version&gt;</code><br><code>&lt;guava.version&gt;19.0&lt;/guava.version&gt;</code><br><code>&lt;slf4j.version&gt;1.7.14&lt;/slf4j.version&gt;</code><br><code>&lt;spring.version&gt;4.2.6.RELEASE&lt;/spring.version&gt;</code></p>
 
       
     </div>
@@ -341,6 +337,10 @@ Copyright (c) 2004-2017 All Rights Reserved.
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/09/30/我的总结（一期）/" rel="next" title="Summary for fox-01 sec">
+                <i class="fa fa-chevron-left"></i> Summary for fox-01 sec
+              </a>
             
           </div>
 
@@ -433,6 +433,15 @@ Copyright (c) 2004-2017 All Rights Reserved.
 
             
 
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
             
 
           </nav>
