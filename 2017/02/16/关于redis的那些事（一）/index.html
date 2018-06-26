@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="技术分享,redis," />
 
 
 
@@ -80,6 +80,7 @@
 
 
 <meta name="description" content="开场问题 这是最近发生的一个B-U-G 现象：网红活动期间，忽然各个网页访问变慢，且持续时间不固定，时快时慢   再看下请求时间： 初步分析：经过一系列排查，我们把问题锁定在了redis上 先看下当时 redis 的状态 看下CPU load： 飚的还是很嗨的，而且具有一定的周期性 我们再看下问题起始发生的时间点： 根据回忆，这个时间点只执行了一个操作，key的删除。使用的命令如下： ./redi">
+<meta name="keywords" content="技术分享,redis">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于redis的那些事（一）">
 <meta property="og:url" content="http://yoursite.com/2017/02/16/关于redis的那些事（一）/index.html">
@@ -93,7 +94,7 @@
 <meta property="og:image" content="http://upload.ouliu.net/i/20170209144705mrlgu.png">
 <meta property="og:image" content="http://upload.ouliu.net/i/2017020914583295v1q.png">
 <meta property="og:image" content="http://upload.ouliu.net/i/20170209152627zad48.png">
-<meta property="og:updated_time" content="2018-06-25T06:21:40.000Z">
+<meta property="og:updated_time" content="2018-06-26T05:23:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于redis的那些事（一）">
 <meta name="twitter:description" content="开场问题 这是最近发生的一个B-U-G 现象：网红活动期间，忽然各个网页访问变慢，且持续时间不固定，时快时慢   再看下请求时间： 初步分析：经过一系列排查，我们把问题锁定在了redis上 先看下当时 redis 的状态 看下CPU load： 飚的还是很嗨的，而且具有一定的周期性 我们再看下问题起始发生的时间点： 根据回忆，这个时间点只执行了一个操作，key的删除。使用的命令如下： ./redi">
@@ -438,6 +439,14 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/技术分享/" rel="tag"># 技术分享</a>
+          
+            <a href="/tags/redis/" rel="tag"># redis</a>
+          
+        </div>
+      
 
       
       
@@ -547,7 +556,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">9</span>
                   <span class="site-state-item-name">Tags</span>
                 </a>
               </div>
