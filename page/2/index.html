@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -80,11 +80,12 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="Wangazhang&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/page/2/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Wangazhang&#39;s Blog">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Wangazhang&#39;s Blog">
 
 
 
@@ -120,7 +121,7 @@
 
 
 
-  <title>Hexo</title>
+  <title>Wangazhang's Blog</title>
   
 
 
@@ -132,7 +133,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -151,12 +152,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">Wangazhang's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">Deep in , light out.</p>
       
   </div>
 
@@ -182,6 +183,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
           </a>
         </li>
       
@@ -237,7 +248,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Wangazhang's Blog">
     </span>
 
     
@@ -299,20 +310,15 @@
       
         
           
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>大约N年前吧，由于公司需要，在<code>tcc</code>的基础上设计并实现了分布式事务，保证了业务流程即使在极端恶劣的环境下也可以保证事务的一致。之前曾经去到一个看起来非常nb的互联网公司去面试，面试官问到了分布式事务的问题，当时我就来了兴趣，将自己设计的那套系统搬出来，一五一十的介绍给了那两位面试官（实话说，我觉得那个时候我说话还是很谨慎的，很尊重那两位面试官的）。结果他们居然不理解我的设计，一味重复着我觉得我自己觉得已经解答了的问题。我尝试从多个层面去解释给他们，但是他们似乎并不买账。后来我仔细研究了二阶段提交，明白了原来，这两位面试官只是学院派。<br>接下来我会用浅显易懂的方式（就是不忽悠），帮助各位落地分布式事务的解决方案。<br>我将围绕以下几个问题展开讨论</p>
-<ol>
-<li>分布式事务问题是如何产生的</li>
-<li>业界的解决方案有什么</li>
-<li>我的设计方案是什么</li>
-<li>更优的设计方案有哪些</li>
-</ol>
-<p>这里首先扫个盲</p>
-<p><code>XA</code><br>XA：XA协议由Tuxedo首先提出的，并交给X/Open组织，作为资源管理器（数据库）与事务管理器的接口标准。目前，Oracle、Informix、DB2和Sybase等各大数据库厂家都提供对XA的支持。XA协议采用两阶段提交方式来管理分布式事务。XA接口提供资源管理器与事务管理器之间进行通信的标准接口。<br><code>ACID</code><br>Atomicity-原子性：一个事务中所有操作都必须全部完成，要么全部不完成。<br>Consistency一致性. 在事务开始或结束时，数据库应该在一致状态。<br>Isolation隔离层. 事务将假定只有它自己在操作数据库，彼此不知晓。<br>Durability. 一旦事务完成，就不能返回。</p>
-<h2 id="分布式事务问题是如何产生的"><a href="#分布式事务问题是如何产生的" class="headerlink" title="分布式事务问题是如何产生的"></a>分布式事务问题是如何产生的</h2><h3 id="本地事务"><a href="#本地事务" class="headerlink" title="本地事务"></a>本地事务</h3><p>轻量级的事务管理器</p>
-<h3 id="简单跨库事务"><a href="#简单跨库事务" class="headerlink" title="简单跨库事务"></a>简单跨库事务</h3><p>简单跨库事务，简单的说就事务包含了n（n≥2）个库的操作，且操作满足事务的要求ACID【也就是常说的一致性，原子性，持久性】，且该服务可以持有多个库的源。<br>列个清单：<br>事务包含n（n≥2）个库的操作<br>ACID<br>服务可以持有事务包含的所有数据源<br>这类事务的解决方案很多，也很简单，大部分关系型数据库都实现了XA，只要有一个事务管理器去调度该应用中各个数据源进行子事务的操作即可。业界典型的实现就是Atomikos</p>
-<p>很显然，最后一点决定了它的事务是简单事务，因为在分布式系统中，要求系统是服务化，不可能存在项目是可以持有多个跨领域数据源的。比方说订单服务和库存服务不可能同时存在于一个工程，这个不符合服务化项目的要求</p>
-<h3 id="跨服务事务（RPC）"><a href="#跨服务事务（RPC）" class="headerlink" title="跨服务事务（RPC）"></a>跨服务事务（RPC）</h3>
-          
+          前言大约N年前吧，由于公司需要，在tcc的基础上设计并实现了分布式事务，保证了业务流程即使在极端恶劣的环境下也可以保证事务的一致。之前曾经去到一个看起来非常nb的互联网公司去面试，面试官问到了分布式事务的问题，当时我就来了兴趣，将自己设计的那套系统搬出来，一五一十的介绍给了那两位面试官（实话说，我觉
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/05/23/分布式事务（二）/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -368,7 +374,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Wangazhang's Blog">
     </span>
 
     
@@ -430,26 +436,19 @@
       
         
           
-            <p>在分布式系统中，著有CAP理论，该理论由加州大学伯克利分校的Eric Brewer教授提出，该理论阐述了在一个分布式系统中不可能同时满足一致性（Consistency）、可用性（Availability），以及分区 容错性（Partition tolerance）。</p>
-<ul>
-<li>一致性</li>
-</ul>
-<p>在分布式系统中数据往往存在多个副本，一致性描述的是这些副本中的数据在内容和组织上的一致。</p>
-<ul>
-<li>可用性</li>
-</ul>
-<p>可用性描述了系统对用户的服务能力，所谓可用是指在用户容忍的时间范围内返回用户期望的结果。</p>
-<ul>
-<li>分区容错性</li>
-</ul>
-<p>分布式系统通常由多个节点构成，这些节点通常分布在不同的网络中，然而网络始终是不可靠的，所以存在分布式集群中的节点因为网络通信故障导致被孤立成一个个小集群的可能性，分区容错性要求在出现这种情况下系统仍然能够对外提供一致性的可用服务。</p>
-<p> 对于一个分布式系统，我们始终要假设网络是不可靠的，所以分区容错性是对一个分布式系统最基本的要求，所以我们更多的是尝试在可用性和一致性之 间寻找一个平衡点。让分布式集群始终对外提供可用的一致性服务一直是富有挑战和趣味的一项任务。暂且抛开可用性，拿一致性来说，对于关系型数据库我们通常 利用事务来保证数据的一致性，当我们的数据量越来越大，大到单库已经无法承担时，我们不得不采取分库分表的策略对数据库实现拆分，构建分布式数据库集群， 这样可以将一个数据库的压力分摊到多个数据库，极大的提升了数据库的存储和响应能力，但是也为我们使用数据库带来了许多的限制，比如主键的全局唯一、联表 查询、数据聚合等等，另外一个相当棘手的问题就是数据库的事务由原先的单库事务变成了现在的分布式事务。<br>  分布式事务的实现并不是很难，比如下 文要展开的两阶段提交（2PC：Two-Phrase Commit）和三阶段提交（3PC：Three-Phrase Commit）都给我们提供了思路，但是如果要保证数据的强一致性，并要求对外提供可用的服务，那么就变成了一个几乎不可能的任务（至少目前是），因此很 多分布式系统对于数据强一致性都敬而远之，本人在之前项目的架构设计中也花费不少时间在系统的一致性和可用性之间寻找平衡。</p>
-<p>两阶段提交协议（2PC：Two-Phrase Commit）<br>  两阶段提交协议的目标在于在分布式系统中保证数据的一致性，许多分布式系统采用该协议提供对分布式事务的支持（提供但不一定有人用，呵呵~）。 顾名思义，该协议将一个分布式的事务过程拆分成两个阶段：投票阶段和事务提交阶段。为了让整个数据库集群能够正常的运行，该协议指定了一个“协调者”单 点，用于协调整个数据库集群的运行，为了简化描述，我们将数据库里面的各个节点称为“参与者”，三阶段提交协议中同样包含“协调者”和“参与者”这两个定 义。</p>
-<p>第一阶段：投票阶段<br>该阶段的主要目的在于打探数据库集群中的各个参与者是否能够正常的执行事务，具体步骤如下：</p>
-<p>协调者向所有的参与者发送事务执行请求，并等待参与者反馈事务执行结果。<br>事务参与者收到请求之后，执行事务，但不提交，并记录事务日志。<br>参与者将自己事务执行情况反馈给协调者，同时阻塞等待协调者的后续指令。<br>第二阶段：事务提交阶段<br>在第一阶段协调者的询盘之后，各个参与者会回复自己事务的执行情况，这时候存在三种可能：uan</p>
-<p>所有的参与者回复能够正常执行事务<br>一个或多个参与者回复事务执行失败<br>协调者等待超时。</p>
+          在分布式系统中，著有CAP理论，该理论由加州大学伯克利分校的Eric Brewer教授提出，该理论阐述了在一个分布式系统中不可能同时满足一致性（Consistency）、可用性（Availability），以及分区 容错性（Partition tolerance）。
 
-          
+一致性
+
+在分布式系统中数据往
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/04/01/分布式事务（一）/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -505,7 +504,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Wangazhang's Blog">
     </span>
 
     
@@ -567,12 +566,19 @@
       
         
           
-            <p>2017-04-01</p>
-<p>没有任何事情是完美的。特别是在分布式的情况下。事实上，分布式在某个程度上其实是人类社会发展的一个极佳写真。因为人类社会中个体的可靠性显然比分布式系统节点的可靠性要低很多。</p>
-<p>2017-03-31</p>
-<p>谁能让应该遇到的人更容易的遇到。谁才能把社交做好。</p>
+          2017-04-01
+没有任何事情是完美的。特别是在分布式的情况下。事实上，分布式在某个程度上其实是人类社会发展的一个极佳写真。因为人类社会中个体的可靠性显然比分布式系统节点的可靠性要低很多。
+2017-03-31
+谁能让应该遇到的人更容易的遇到。谁才能把社交做好。
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/31/oneWordEveryDay/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -628,7 +634,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Wangazhang's Blog">
     </span>
 
     
@@ -690,42 +696,21 @@
       
         
           
-            <p>管理及管理技术</p>
-<blockquote>
-<p>管理的最终目的是提升企业经营效益</p>
-</blockquote>
-<p>这句话反过来也是成立的，即：要提升企业经营效益，必须强化企业管理能力。</p>
-<p>管理最终的目的是服务于企业效益，只不过在提升效益的时候，有很多的环节，所以我们将管理工作按照企业运营环节的不同，划分出了诸如人力管理、财务管理、行政管理、研发管理等等。</p>
-<p>当企业规模非常小或者较原始的时期，管理只需要老板一个人来做，随着企业规模逐渐增大、工序逐渐增多时，才需要增加更多的管理岗位，用于进行不同方向和职能事务的处理。</p>
-<blockquote>
-<p>职能重构：将职能按照企业需求重新划分的方法，是最简单的管理技能运用。<br>这里的职能分类会有很多种，如地域、领域、产线等等。</p>
-</blockquote>
-<p>我们经常可以看到各个公司按区域、产品线、研发方向等来划分多个部门，并且随着公司的发展阶段，会经常进行调整，此处所使用的就是管理的最基础技能，我把它称之为<code>职能重构技术</code>。</p>
-<p><code>职能重构</code>是不是很像“代码重构”？没错，就像编程一样，根据现阶段企业要求，将现有的组织结构进行调整，使用“封装”和“解耦”的方式，将企业各部门进行重组，最终服务于企业需求。</p>
-<p>“职能重构”技术是最古老、最简单、最基础的管理技术，如果运用得好，对企业带来的效益绝对是非常可观的。很多企业内部管理混乱，各部门协调不好，都是“职能重构”应用得不好所导致，要尽量让“公鸡做公鸡的事，母鸡做母鸡的事”。</p>
-<p>“职能重构”用于解决企业组织结构划分的问题，从最初的金字塔结构，到现在的扁平化管理结构，都是职能重构技术的实际应用。<br><img src="http://onaqzli6n.bkt.clouddn.com/14907799150101.jpg" alt=""></p>
-<p>在这里，我们后续重点针对的是矩阵式结构进行项目管理技术的应用，其他的结构划分大家可以自行百度了解，不会在后续对相关内容进行说明</p>
-<blockquote>
-<p>管理是将无序变有序，将混沌变清晰的过程。</p>
-</blockquote>
-<p>企业管理最重要的一点是将将管理工作从无序变有序，从混沌变清晰的过程，而现代企业管理技术更加强调的一点是量化管理。所有的管理技术都围绕上述几点展开。</p>
-<p>通过“职能重构”我们将企业组织结构和职责清晰化之后，接下来则是对组织过程管理的清晰化和数据化。</p>
-<p>组织过程管理主要包括两大类：人和事。这里的人是服务于事的，人是由于事情而存在的，因此，最终会归结为对事的管理，而企业中的事项均可以划分为“项目”，即企业的工作均是围绕一个个项目展开的。这里的项目是指广义上的项目，不仅仅是客户项目，而是包含所有日常事务，诸如组织一次培训、发放一个月的薪水、公司搬家和制定一份财务报表等，都可以纳入到项目的范畴。</p>
-<blockquote>
-<p>项目管理是对过程的管理。</p>
-</blockquote>
-<p>项目管理需要划分项目执行的各个过程及过程职责（无序到有序的过程），一般的项目过程均会包含如下几个阶段：<br><img src="http://onaqzli6n.bkt.clouddn.com/14907801506194.jpg" alt=""></p>
-<p>每一个项目过程的执行都离不开输入内容、过程执行和输出产物三部分（数据量化过程）：<br><img src="http://onaqzli6n.bkt.clouddn.com/14907801741199.jpg" alt=""></p>
-<p>这里的过程划分方式、过程管理方式均可以归类为项目管理硬性技术</p>
-<blockquote>
-<p>项目管理技术可以划分为硬性技术和软性技术。硬性技术通常是指可以通过培训、学习等方式学会和掌握的；软性技术通常是对管理者自身性格、为人处世方面的要求，无法快速学会并运用的能力。</p>
-</blockquote>
-<p>硬性技术的掌握可以使管理者达到合格的程度，即一个管理者只要掌握具体的管理技术和方法，并付诸实施和跟踪，通常情况下可以适合对应的管理岗位的要求。</p>
-<p>软性技术是管理者为人处世的方式和方法，其决定了管理者可以晋升的空间，不是我们这里讲解的内容。</p>
-<hr>
-<p>总结：我们在这里讲了管理的目的、企业组织结构的分类和项目管理的重要性，提到了组织结构划分的技术—职能重构，提到了项目管理的5大过程和过程管理的基本思路，明确了项目管理技术重点在于强调硬性管理技能，后续章节我们会围绕项目管理的5大过程，讲解硬性技能在5大过程中的应用。</p>
+          管理及管理技术
 
-          
+管理的最终目的是提升企业经营效益
+
+这句话反过来也是成立的，即：要提升企业经营效益，必须强化企业管理能力。
+管理最终的目的是服务于企业效益，只不过在提升效益的时候，有很多的环节，所以我们将管理工作按照企业运营环节的不同，划分出了诸如人力管理、财务管理、行政管理、研发管理等等。
+当企
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/29/项目管理轧记（二）/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -781,7 +766,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Wangazhang's Blog">
     </span>
 
     
@@ -843,46 +828,16 @@
       
         
           
-            <blockquote>
-<p>脸谱技术架构经历了从无到有，从单一到多元，从简单到复杂的过程。不过最近大家应该都能深刻的体会到：一直以来我们也未能避免平滑发布这件事。<br>过去我们可能只需要简单的发布一两个服务，就完成了一次发布，但是随着系统的拆分，我们逐步完成了单一系统的拆分，服务化，以及稍后就要动手的微服务拆分，这个过程我们渐渐发现平滑发布的重要性，因为服务已经变成了上百个，而且还在呈现扩张的趋势，过去的这种发布形式若要影响面够小，我们必须停机，这是不能容忍的。</p>
-</blockquote>
-<p>因此这次我们需要对非停机发布下的平滑部署做一个认识。</p>
-<p>这里我抛砖引玉，讲解下</p>
-<h1 id="如何利用dubbo进行平滑部署"><a href="#如何利用dubbo进行平滑部署" class="headerlink" title="如何利用dubbo进行平滑部署"></a>如何利用dubbo进行平滑部署</h1><p>这里先提几个概念：灰度测试、平滑部署</p>
-<h2 id="灰度测试"><a href="#灰度测试" class="headerlink" title="灰度测试"></a>灰度测试</h2><p>灰度测试是指在黑与白之间，能够平滑过渡的一种部署方式基础上做的测试。AB test就是一种灰度部署方式，让一部分用户继续用A，一部分用户开始用B，如果用户对B没有什么反对意见，那么逐步扩大范围，把所有用户都迁移到B上面来。<br>灰度部署可以保证整体系统的稳定，在初始灰度的时候就可以发现、调整问题，以保证其影响度。</p>
-<p>我们的系统可以通过这几种方式进行灰度</p>
-<p>入口灰度、服务灰度、以及数据库灰度</p>
-<p>数据库灰度这里不做讨论，业界基本没有完全可行的解决方案（如灰度用户）！</p>
-<p>这里讨论的是入口灰度和服务灰度</p>
-<h2 id="平滑部署"><a href="#平滑部署" class="headerlink" title="平滑部署"></a>平滑部署</h2><p>平滑部署，指部署过程不停机即可实现服务的升级，要区别于平滑发布这个概念。</p>
-<h1 id="LET’S-START"><a href="#LET’S-START" class="headerlink" title="LET’S START"></a>LET’S START</h1><p>准备<br>指定一批（套）服务为灰度发布服务，每次灰度发布时首先更新这批机器<br>因此要求所有的服务要有备份，即服务必须部署2个以上<br>如下图示<br><img src="http://onaqzli6n.bkt.clouddn.com/14906834107816.png" alt=""></p>
-<p>步骤</p>
-<ol>
-<li><p>通过程序统一修改服务的版本号为灰度发布版本号 如0.0.0，区别于1.1.1的正式版本</p>
-</li>
-<li><p>进行灰度测试</p>
-</li>
-<li><p>通过灰度测试后，ngnix reload 切换为灰度机器，此时原灰度机器正式对外，且0.0.0被认为是正式版本号，而1.1.1变为下次灰度测试的版本</p>
-</li>
-<li><p>发布其他被替换下来的服务为新版本并分别上线</p>
-</li>
-<li><p>剩余face-web的上线</p>
-</li>
-</ol>
-<p>以发布finance为例，尽量简化过程<br><img src="http://onaqzli6n.bkt.clouddn.com/14906835833854.png" alt=""></p>
-<p><img src="http://onaqzli6n.bkt.clouddn.com/14906990399145.png" alt=""></p>
-<p><img src="http://onaqzli6n.bkt.clouddn.com/14906836356449.png" alt=""></p>
-<p><img src="http://onaqzli6n.bkt.clouddn.com/14906837414361.png" alt=""></p>
-<h1 id="Q-amp-A："><a href="#Q-amp-A：" class="headerlink" title="Q&amp;A："></a>Q&amp;A：</h1><ol>
-<li>face-web如何切换<br>根据流量选择部分face-web下线，通过ngnix的reload 动态切换</li>
-<li>灰度发布的版本号是多少？<br>有两个0.0.0 和1.1.1</li>
-<li><p>看起来步骤还是很复杂，有没有简单点的动作完成<br>首先灰度发布本身就是复杂的内容，想要精简内容已近无可能。<br>但是从流程上我们可以通过可视化界面，将多个步骤合成，从而简化我们的发布流程，从而缩短发布时间。</p>
-</li>
-<li><p>使用脚本将预灰度的web服务停止并将新的web服务启动，此时 的web服务版本号与线上服务区分开来<br><img src="http://onaqzli6n.bkt.clouddn.com/14906837414361.png" alt=""></p>
-</li>
-</ol>
-
           
+脸谱技术架构经历了从无到有，从单一到多元，从简单到复杂的过程。不过最近大家应该都能深刻的体会到：一直以来我们也未能避免平滑发布这件事。过去我们可能只需要简单的发布一两个服务，就完成了一次发布，但是随着系统的拆分，我们逐步完成了单一系统的拆分，服务化，以及稍后就要动手的微服务拆分，这个过程我们渐渐发
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/28/基于dubbo的平滑部署设计/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -938,7 +893,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Wangazhang's Blog">
     </span>
 
     
@@ -1000,54 +955,19 @@
       
         
           
-            <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>在进行人员招聘面试时，经常会问到对方的个人职业规划，很多人（超过70%以上）的回答都是先做一段时间的技术，然后考虑向管理方向发展。</p>
-<blockquote>
-<p>机：管理是很多人期望从事的岗位。</p>
-</blockquote>
-<p>我这个年纪的人，在小时候经常会被家长告知，长大了要当官，当大官。因此，当官，无论在政府还是企业当官，是很多人的梦想。<br>我们想到做管理，就会想到钱多、人脉广、权力大，衣着光鲜，有面子。在朋友见面的时候，如果来一个介绍：我是XX公司的总监、CxO，就会虚荣心膨胀。<br>不过，在当前的环境下，随着管理的科学化和经济的多变性，管理已经不再是原来想象中那样美好了。</p>
-<blockquote>
-<p>危：管理者不是铁饭碗，更不是金饭碗，只是一个职位，别跳进了管理危机的大坑中</p>
-</blockquote>
-<p>你的身边是否有如下的案例：</p>
-<p>在工作三年后，小李加入一个发展较好公司的IT部门，负责进行软件开发工作。随着公司项目越来越多，部门经理发现自己一个人开始无法兼顾所有的项目进度了，需要在内部提拔一个项目经理，负责一类项目的研发管理工作，以便于分担个人的管理负担。 小李在加入公司半年多以来，由于刚刚入职，要好好表现自己，所以主动性和责任心非常好，技术能力也能够满足现阶段的项目需要。小李进入了部门经理的提拔名单，于是，顺理成章，小李带着3、5个兄弟开启了他的管理生涯，实现技术向管理的转型。 在传统IT企业，项目经理所做的管理非常简单，基本上是确定技术架构、制定项目计划，将任务分配给手下兄弟干，监督一下项目进度，处理一下成员遇到的问题，能够按时交付项目就好了，这些小李处理起来得心应手，得到了部门经理的信任。 随着时间的推移，公司效益表现也比较好，原来的部门经理已经升为了部门总监，小李也跟着晋级到了技术经理，薪酬也实现了翻倍增长。 在这段时间里，小李早已经不需要自己写代码了，由于公司压力不大，每天的工作也很悠闲，技术还是原来的技术，唯一麻烦的是就是和销售部门确认时间进度，来回扯皮。不过，小李很享受现在的工作状态，觉得现在还不错。 就这样，4、5年的时间过去了，小李贷款买了房子，组建了家庭，有了自己的孩子，还买了车子，但是，公司的经营状况却越来越不理想，项目越来越少，公司计划开启裁员计划，小李在这个时候真的慌了。 由于待在传统企业，技术能力基本上提升很小，而且也不再愿意去从事技术工作；虽然公司也经常进行一些管理人员的培训，但也多是听听就算了，没有形成理论，也没有在实际中积累多少经验；而且，人已经到了30好几，在市场上的竞争力直线下降，如果被裁，以什么样的能力去市场上竞争呢？小李陷入了焦虑之中。</p>
-<p>随着职业经理人的发展，管理真正变成了一个职业，和程序员一样，不要再将其官位化。</p>
-<h1 id="什么样的人适合从事管理职业？"><a href="#什么样的人适合从事管理职业？" class="headerlink" title="什么样的人适合从事管理职业？"></a>什么样的人适合从事管理职业？</h1><p>虽然现在很多人从事的是管理工作，做的是管理的事情，但是，管理，真的是一个风险很高的职业，尤其不适合养老的思想。</p>
-<p>那么，什么样的人适合从事管理呢？我们先回答一下以下的问题：</p>
-<pre><code>1、你是一个原则性很强的人吗？
-</code></pre><p>a、是； b、不是； c、看情况；d、不知道。</p>
-<pre><code>2、假如你现在已经实现了财务自由，你会？
-</code></pre><p>a、好吃懒做；b、周游世界；c、自己创业；d、不知道。</p>
-<pre><code>3、你怎么看待乐天集团事件？
-</code></pre><p>a、坚决抵制，从我做起；b、别人都抵制，我也抵制；c、政治游戏；d、不关心。</p>
-<pre><code>4、当你觉得是爱人的问题，从而和老婆闹矛盾时，你会？
-</code></pre><p>a、不理她，等她道歉；b、买花给她，求她原谅；c、找个时机好好和她谈谈；d、过几天就好了；</p>
-<pre><code>5、当你被领导指派了一个非本职工作的紧急事情时，你会？
-</code></pre><p>a、告诉领导不是我的事；b、表示有更重要的事情要做；c、先做，然后再谈问题；d、讲条件。</p>
-<pre><code>6、当你想到一个好的发财点子时，你会？
-</code></pre><p>a、自己偷偷去做；b、想想就好了；c、讲给别人听；d、拉其他人入伙开干。</p>
-<pre><code>7、当你由于非自己原因导致事情搞砸时，你会？
-</code></pre><p>a、解释原因，保护自己；b、指责别人，推卸责任；c、承认错误，组织改正；d、无所谓。</p>
-<pre><code>8、当你工作完成后，发现没有事情可做的时候，你会？
-</code></pre><p>a、看小说，玩游戏；b、找人聊天；c、看看有没有遗漏；d、看书学习。</p>
-<pre><code>9、你在招聘一个关键岗位人员，一个30万年薪的合格者、一个15万年薪可培养者和一个60万年薪的最佳者，你会招聘哪一个？
-</code></pre><p>a、30万；b、15万；c、60万；d、让领导想吧。</p>
-<p>以上的问题，我期望的正确答案都是c，对应着职业管理的9种基本素质要求。</p>
-<h1 id="管理职业的基本素质要求"><a href="#管理职业的基本素质要求" class="headerlink" title="管理职业的基本素质要求"></a>管理职业的基本素质要求</h1><h2 id="政治觉悟"><a href="#政治觉悟" class="headerlink" title="政治觉悟"></a>政治觉悟</h2><p>职业管理者要具备基础的政治觉悟，做事有底线、讲原则，要有基本的职业操守。很多技术人员转型管理时，首先要面对的就是这个问题。大多数技术人员逻辑思维能力很清晰，但是，在进行公司政治处理时，往往会落於下风，成功的管理者政治觉悟都比较高。</p>
-<h2 id="进取精神"><a href="#进取精神" class="headerlink" title="进取精神"></a>进取精神</h2><p>一个没有进取精神的管理者，终究会被淘汰的。职业管理者的欲望要很强烈，无论是权利、金钱、绩效还是其他方面。当然，我们推崇的方法永远是通过正向手段达到的进取，而不是阴谋诡计。初涉管理时，可能大家都不缺进取精神，麻烦的是，长时间之后的疲惫期，一旦感觉到疲惫时，就是你走下坡路的开始。</p>
-<p>进入管理职业，只能往前，不能后退。</p>
-<h2 id="大局观"><a href="#大局观" class="headerlink" title="大局观"></a>大局观</h2><p>大局观体现在多个方面，大到整个公司，也可能只是一个系统，因此，判断一个人有没有大局观，对于IT人员来说，看看他能不能将整体架构说清楚；当两个衔接部门起冲突时，他的应对方式是什么？</p>
-<p>大局观是对整体的分析思维，如果只局限于自己的范畴，发展终将受限。</p>
-<h2 id="沟通协调"><a href="#沟通协调" class="headerlink" title="沟通协调"></a>沟通协调</h2><p>你是一个能说会到的人吗？在处理冲突时，是否能够平衡各方利益？沟通协调在管理中所占的比重非常高，有些人可以游刃有余，而有些人则会处处受制，无关职位高低。</p>
-<h2 id="责任心"><a href="#责任心" class="headerlink" title="责任心"></a>责任心</h2><p>责任心强调的是心，而不是责任。我们每个人都背负很多责任，但是，不是每个人都在用心对待。</p>
-<h2 id="分享"><a href="#分享" class="headerlink" title="分享"></a>分享</h2><p>财聚人散，财散人聚。分享并不仅仅是分享金钱，包括思维、权利、知识、方法等，当然，也有钱财。懂得分享，才会收获更多。</p>
-<h2 id="担当"><a href="#担当" class="headerlink" title="担当"></a>担当</h2><p>担当更重要的是承担后果。一个公司的高层，在年初制定了考核目标，最终有80%的人没有达到要求，如果你是这些人中的一员，你会怎么做？如果你是公司董事长，你会怎么看待这些人？</p>
-<h2 id="主动性"><a href="#主动性" class="headerlink" title="主动性"></a>主动性</h2><p>你是一个喜欢主动索要工作的人，还是一个被动等待指派任务的人？你能否发现并提出问题及解决方案？在遇到问题时，你是积极解决还是拖延处理？</p>
-<h2 id="冷静果断"><a href="#冷静果断" class="headerlink" title="冷静果断"></a>冷静果断</h2><p>这里其实更多强调的是果断，有些时候，有些事情，拖得越久，处理成本会越高。</p>
-<p>有个典故：添油战术。<br>管理者在处理问题时，一定要避免，如果必须解决，那就要解决就一次性解决。现实中你会发现很多真实的案例：为了节省成本，公司一直在招比较差的人；以指标的方式不断修补漏洞；开始想象很美好，投入了一个项目，一直不断投入，就是不见回报，但又不舍得放弃。</p>
-<p>管理是一个在处理麻烦的同时，还得有突破的职位，做和做好之间的差别天差地远。因此，在被管理职位诱惑之前，冷静想想，管理是否符合我的自身条件，然后再决定是否投入其中，是非常有必要的。<br>这是项目管理的第一章，之所以有该章节，是因为IT行业，大多数的技术管理岗人员都是从技术转型而来，而有时候在很多公司，似乎只有向管理转型的少数发展方向，因此，以此文章来问问自己，我是不是真的适合管理？</p>
-<p>从做管理开始，你的核心竞争力已经不再是技术，管理方法只是管理的辅助手段，它决定的只是工具和技术问题，无法解决管理成败问题，成败来源于你的基本素质。</p>
+          前言在进行人员招聘面试时，经常会问到对方的个人职业规划，很多人（超过70%以上）的回答都是先做一段时间的技术，然后考虑向管理方向发展。
 
-          
+机：管理是很多人期望从事的岗位。
+
+我这个年纪的人，在小时候经常会被家长告知，长大了要当官，当大官。因此，当官，无论在政府还是企业当官，是很多人的梦想。我们想到做
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/27/项目管理轧记（一）/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1103,7 +1023,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Wangazhang's Blog">
     </span>
 
     
@@ -1165,13 +1085,20 @@
       
         
           
-            <blockquote>
-<p>开场问题<br>上期遗留了2个问题<br>如何查看网络流量问题<br>redis为什么会不进行增量，而选择全量的复制</p>
-</blockquote>
-<h2 id="如何查看网络流量问题"><a href="#如何查看网络流量问题" class="headerlink" title="如何查看网络流量问题"></a>如何查看网络流量问题</h2><p>这个有多个工具，我这边给大家推荐的是’nload’</p>
-<p>上个图</p>
-<h2 id="redis为什么会不进行增量，而选择全量的复制"><a href="#redis为什么会不进行增量，而选择全量的复制" class="headerlink" title="redis为什么会不进行增量，而选择全量的复制"></a>redis为什么会不进行增量，而选择全量的复制</h2>
           
+开场问题上期遗留了2个问题如何查看网络流量问题redis为什么会不进行增量，而选择全量的复制
+
+如何查看网络流量问题这个有多个工具，我这边给大家推荐的是’nload’
+上个图
+redis为什么会不进行增量，而选择全量的复制
+          
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/03/25/关于redis的那些事（二）/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1227,7 +1154,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Wangazhang's Blog">
     </span>
 
     
@@ -1289,20 +1216,18 @@
       
         
           
-            <blockquote>
-<p>随着研发人员的增加，人员流动相对固化，团队惰性有形无形的滋生，而技术革新亟待加速，急需拉大‘明星’与‘平民’的差距。</p>
-<p>团队个人之间应产生互为竞争合作，相互平衡的关系，以树立溺水行舟，不进则退和弱肉强食的狼性文化为思想基奠，特补充管理办法规定。</p>
-<p>以结果（产出）为导向，实现领导班子及团队高度自由的优化和重组</p>
-</blockquote>
-<h1 id="总原则："><a href="#总原则：" class="headerlink" title="总原则："></a>总原则：</h1><p>强者愈强，弱者淘汰</p>
-<h1 id="针对个人："><a href="#针对个人：" class="headerlink" title="针对个人："></a>针对个人：</h1><p>具体规则：</p>
-<h2 id="强者愈强："><a href="#强者愈强：" class="headerlink" title="强者愈强："></a>强者愈强：</h2><p>在设置的各个小组内，由组长（master）组织，发起选举（选举细则组内自定），若连续2个周期被评为GreatGuy(以下简称GG)。则拥有一次自由换岗机会。换岗机会可选择使用（即，可用也可不用），不累加，不过期。（每次最多2人）</p>
-<h2 id="弱者淘汰："><a href="#弱者淘汰：" class="headerlink" title="弱者淘汰："></a>弱者淘汰：</h2><p>在设置的各个小组内，由组长（master）组织，发起选举（选举细则组内自定），若一个周期内被评为PoorGuy（以下简称PG）。则先由直属领导谈话，调节后留组观察。（最少1人）<br>若连续两个自然周期内被评为PG，考虑其他可能的形式处理，包括但不限于降级,调岗,淘汰。</p>
-<p>评选结果出口<br>各个评选出来后，汇报给<code>boss@zjlp.com</code>进行相应的处理</p>
-<p>实行定岗不定人，个人可以通过自己的努力证明自己，获得合适的晋升，调岗机会。团队也可以通过自身的努力形成特有的向心力。即所谓的铁打的营流动的兵。</p>
-<p>这对于原先就是优秀的GG，GT来说没有任何威胁和改变，但对于鱼龙混珠，想蒙混过关的小伙伴来说可谓是，狼来了！</p>
-
           
+随着研发人员的增加，人员流动相对固化，团队惰性有形无形的滋生，而技术革新亟待加速，急需拉大‘明星’与‘平民’的差距。
+团队个人之间应产生互为竞争合作，相互平衡的关系，以树立溺水行舟，不进则退和弱肉强食的狼性文化为思想基奠，特补充管理办法规定。
+以结果（产出）为导向，实现领导班子及团队高度自由的优化
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/17/研发中心管理办法规定/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1358,7 +1283,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Wangazhang's Blog">
     </span>
 
     
@@ -1420,44 +1345,18 @@
       
         
           
-            <blockquote>
-<p>随着大后端人员的增加，人员流动固化，团队惰性滋生，而技术革新亟待加速，急需拉大‘明星’与‘平民’的差距。</p>
-<p>团队个人之间应产生互为竞争合作，相互平衡的关系，以树立溺水行舟，不进则退和弱肉强食的狼性文化为大后端思想基奠，加入大后端管理办法规定。</p>
-<p>以结果（产出）为导向，实现领导班子及团队高度自由的优化和重组</p>
-</blockquote>
-<p>总原则：</p>
-<p>强者愈强，弱者淘汰</p>
-<h1 id="针对团队："><a href="#针对团队：" class="headerlink" title="针对团队："></a>针对团队：</h1><p>设置管理型leader、技术型leader分别应对团队中管理lack和技术lack问题。</p>
-<p>管理lack表现在，因各种因素(需要深入研究业务及技术)而无法全面顾及团队管理团队建设的现象</p>
-<p>技术lack表现在，团队管理井井有条，然团队对技术了解不够深入的想象</p>
-<p>针对管理型leader，设立了使徒行者团队！（详见介绍）</p>
-<h2 id="管理leader（ML）："><a href="#管理leader（ML）：" class="headerlink" title="管理leader（ML）："></a>管理leader（ML）：</h2><p>解决团队管理lack问题</p>
-<h2 id="技术leader（SL）："><a href="#技术leader（SL）：" class="headerlink" title="技术leader（SL）："></a>技术leader（SL）：</h2><p>解决技术lack问题</p>
-<p>各leader在本小组人员内对号入坐，选定包括自己在内的两种类型的leader人选，设置具有相当资质的小伙伴加入团队建设中，原则应分立2人。</p>
-<p>具体规则：</p>
-<p>强者愈强：</p>
-<p>在产出上，连续2个周期被评为GreatTeam。则考虑嘉奖。（最多2组）</p>
-<p>弱者淘汰：</p>
-<p>在产出上，连续2个周期被评为PoorTeam。则考虑惩罚。（最少1组）</p>
-<h1 id="针对个人："><a href="#针对个人：" class="headerlink" title="针对个人："></a>针对个人：</h1><p>具体规则：</p>
-<h2 id="强者愈强："><a href="#强者愈强：" class="headerlink" title="强者愈强："></a>强者愈强：</h2><p>在设置的各个小组内，由组长（master）组织，发起选举（选举细则组内自定），若连续2个周期被评为GreatGuy(以下简称GG)。则拥有一次自由换岗机会。换岗机会可选择使用（即，可用也可不用），不累加，不过期。（每次最多2人）</p>
-<h2 id="弱者淘汰："><a href="#弱者淘汰：" class="headerlink" title="弱者淘汰："></a>弱者淘汰：</h2><p>在设置的各个小组内，由组长（master）组织，发起选举（选举细则组内自定），若一个周期内被评为PoorGuy（以下简称PG）。则先由直属领导谈话，调节后留组观察。（最少1人）<br>若连续两个自然周期内被评为PG，考虑其他可能的形式处理，包括降级,调岗,淘汰。</p>
-<p>实行定岗不定人，个人可以通过自己的努力证明自己，获得合适的晋升，调岗机会。团队也可以通过自身的努力形成特有的向心力。即所谓的铁打的营流动的兵。</p>
-<p>这对于原先就是优秀的GG，GT来说没有任何威胁和改变，但对于鱼龙混珠，想蒙混过关的小伙伴来说可谓是，狼来了！</p>
-<h1 id="附录："><a href="#附录：" class="headerlink" title="附录："></a>附录：</h1><p>岗位设置及可调岗方向介绍<br>所有开发小组将按以下类型划分组别</p>
-<h2 id="团队类型设置："><a href="#团队类型设置：" class="headerlink" title="团队类型设置："></a>团队类型设置：</h2><ul>
-<li><p>迭代型团队：参与迭代组日常工作 （摩拳擦掌</p>
-</li>
-<li><p>技术型团队：基础设施建设、基础设施优化、客户端、中间件等开发 （技术攻坚</p>
-</li>
-<li><p>项目型团队：相对固定型、项目类等，如X事业部、相对固定的业务域开发 （自我挑战</p>
-</li>
-</ul>
-<h2 id="目前团队归属："><a href="#目前团队归属：" class="headerlink" title="目前团队归属："></a>目前团队归属：</h2><p>迭代型团队：挑战者、天行者、开拓者</p>
-<p>技术型团队：大数据组</p>
-<p>项目型团队：X事业部、电商组、支付组、金融组、社群组、IM组、发现组</p>
-
           
+随着大后端人员的增加，人员流动固化，团队惰性滋生，而技术革新亟待加速，急需拉大‘明星’与‘平民’的差距。
+团队个人之间应产生互为竞争合作，相互平衡的关系，以树立溺水行舟，不进则退和弱肉强食的狼性文化为大后端思想基奠，加入大后端管理办法规定。
+以结果（产出）为导向，实现领导班子及团队高度自由的优化和
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/16/脸谱后端管理办法规定/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1513,7 +1412,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Wangazhang's Blog">
     </span>
 
     
@@ -1575,32 +1474,25 @@
       
         
           
-            <blockquote>
-<p>作者：王章 花名：风男 2016/12/21 12:22:53</p>
-</blockquote>
-<h1 id="WHY"><a href="#WHY" class="headerlink" title="WHY"></a>WHY</h1><p>企业需要<br>技术驱动<br>技术level</p>
-<p>自我需要<br>程序员的成长历程<br>实际经验无法快速弥补</p>
-<h1 id="WANT-TO-BE"><a href="#WANT-TO-BE" class="headerlink" title="WANT TO BE"></a>WANT TO BE</h1><p>互联网后端开发老司机、高级研发、架构师</p>
-<h1 id="WHAT"><a href="#WHAT" class="headerlink" title="WHAT"></a>WHAT</h1><p><img src="http://i.imgur.com/x5rO6EU.png" alt=""></p>
-<h1 id="素养"><a href="#素养" class="headerlink" title="素养"></a>素养</h1><p>开源、分享、拥抱、接纳、创新</p>
-<h1 id="工具规范"><a href="#工具规范" class="headerlink" title="工具规范"></a>工具规范</h1><p><img src="http://i.imgur.com/v9tr5tT.png" alt=""></p>
-<h1 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h1><p>分布式开发技术栈<br><img src="http://i.imgur.com/qcqi8Uv.png" alt=""></p>
-<h1 id="HOW"><a href="#HOW" class="headerlink" title="HOW"></a>HOW</h1><p>培训、实战、自我驱动</p>
-<h1 id="WHO"><a href="#WHO" class="headerlink" title="WHO"></a>WHO</h1><p>蔡食屎</p>
-<blockquote>
-<p>简介<br>原名：蔡伯承<br>部门：金融事业部<br>职级：发开主管<br>擅长业务领域：红包、颜值理财、社群<br>中间件及客户端：redis、mongodb、MQ</p>
-</blockquote>
-<p>老唐</p>
-<blockquote>
-<p>简介<br>原名：唐龙<br>部门：金融事业部<br>职级：发开主管<br>擅长业务领域：颜值理财、社群、红包<br>中间件及客户端：dubbo、zookeeper、mycat</p>
-</blockquote>
-<p>风男</p>
-<blockquote>
-<p>简介<br>原名：王章<br>部门：金融事业部<br>职级：技术经理<br>擅长业务领域：颜值理财、社群、用户中心<br>技术领域：分布式架构、分布式服务治理</p>
-</blockquote>
-<h1 id="WE-WANT-YOU"><a href="#WE-WANT-YOU" class="headerlink" title="WE WANT YOU"></a>WE WANT YOU</h1><p>如果你热情高涨，如果你技术过硬，如果你觉得自己有料，欢迎加入讲师团队！</p>
-
           
+作者：王章 花名：风男 2016/12/21 12:22:53
+
+WHY企业需要技术驱动技术level
+自我需要程序员的成长历程实际经验无法快速弥补
+WANT TO BE互联网后端开发老司机、高级研发、架构师
+WHAT
+素养开源、分享、拥抱、接纳、创新
+工具规范
+技术栈分布式开发技术栈
+HOW培训
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/16/脸谱攻城狮养成计划/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1696,10 +1588,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">Tags</span>
-                
+                </a>
               </div>
             
 

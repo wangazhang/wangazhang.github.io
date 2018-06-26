@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="技术ppt jvm," />
+  <meta name="keywords" content="技术,jvm," />
 
 
 
@@ -80,12 +80,13 @@
 
 
 <meta name="description" content="开场问题这也是最近发生的一个B-U-G 现象：过年值班期间，还是大年30晚饭时间，老板约我们值班的一行人去吃年夜饭。 我们兴高采烈走到饭店楼下，等电梯了，突然接到一个电话。 好吧，是那个万恶的老蔡！！  ‘诶，王章啊，短信收到了吗？’ ‘鱼塘发货吗？ 收到了，收到了！’ ‘是那个没有兑付的短信’ ‘啊？什么付？’ ‘兑付啊’ ‘哦，兑付啊’  此时心里一万个草泥马啊  看了下手机。。。   脸都绿">
-<meta name="keywords" content="技术ppt jvm">
+<meta name="keywords" content="技术,jvm">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于jvm的那些事（一）">
 <meta property="og:url" content="http://yoursite.com/2017/02/16/关于jvm的那些事（一）/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Wangazhang&#39;s Blog">
 <meta property="og:description" content="开场问题这也是最近发生的一个B-U-G 现象：过年值班期间，还是大年30晚饭时间，老板约我们值班的一行人去吃年夜饭。 我们兴高采烈走到饭店楼下，等电梯了，突然接到一个电话。 好吧，是那个万恶的老蔡！！  ‘诶，王章啊，短信收到了吗？’ ‘鱼塘发货吗？ 收到了，收到了！’ ‘是那个没有兑付的短信’ ‘啊？什么付？’ ‘兑付啊’ ‘哦，兑付啊’  此时心里一万个草泥马啊  看了下手机。。。   脸都绿">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1487332897577&di=c922cf2159bb4707be1041da738fb967&imgtype=0&src=http%3A%2F%2Fs3.sinaimg.cn%2Fmiddle%2F53a936a5gbcd6ada09662%26690">
 <meta property="og:image" content="http://upload.ouliu.net/i/20170217152040jvkfh.jpeg">
 <meta property="og:image" content="http://upload.ouliu.net/i/20170217153706i7jg9.png">
@@ -99,7 +100,7 @@
 <meta property="og:image" content="http://upload.ouliu.net/i/20170217164710c9bg3.png">
 <meta property="og:image" content="http://upload.ouliu.net/i/20170217164735f4rnb.png">
 <meta property="og:image" content="http://upload.ouliu.net/i/20170217165548eb6hf.png">
-<meta property="og:updated_time" content="2018-06-25T06:44:35.000Z">
+<meta property="og:updated_time" content="2018-06-26T03:40:31.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="关于jvm的那些事（一）">
 <meta name="twitter:description" content="开场问题这也是最近发生的一个B-U-G 现象：过年值班期间，还是大年30晚饭时间，老板约我们值班的一行人去吃年夜饭。 我们兴高采烈走到饭店楼下，等电梯了，突然接到一个电话。 好吧，是那个万恶的老蔡！！  ‘诶，王章啊，短信收到了吗？’ ‘鱼塘发货吗？ 收到了，收到了！’ ‘是那个没有兑付的短信’ ‘啊？什么付？’ ‘兑付啊’ ‘哦，兑付啊’  此时心里一万个草泥马啊  看了下手机。。。   脸都绿">
@@ -139,7 +140,7 @@
 
 
 
-  <title>关于jvm的那些事（一） | Hexo</title>
+  <title>关于jvm的那些事（一） | Wangazhang's Blog</title>
   
 
 
@@ -151,7 +152,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -169,12 +170,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">Wangazhang's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">Deep in , light out.</p>
       
   </div>
 
@@ -200,6 +201,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
           </a>
         </li>
       
@@ -255,7 +266,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Wangazhang's Blog">
     </span>
 
     
@@ -395,7 +406,9 @@
       
         <div class="post-tags">
           
-            <a href="/tags/技术ppt-jvm/" rel="tag"># 技术ppt jvm</a>
+            <a href="/tags/技术/" rel="tag"># 技术</a>
+          
+            <a href="/tags/jvm/" rel="tag"># jvm</a>
           
         </div>
       
@@ -507,10 +520,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">Tags</span>
-                
+                </a>
               </div>
             
 

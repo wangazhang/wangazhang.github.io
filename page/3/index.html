@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next muse use-motion" lang="">
+<html class="theme-next muse use-motion" lang="zh-CN">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -80,11 +80,12 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="Wangazhang&#39;s Blog">
 <meta property="og:url" content="http://yoursite.com/page/3/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="Wangazhang&#39;s Blog">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="Wangazhang&#39;s Blog">
 
 
 
@@ -120,7 +121,7 @@
 
 
 
-  <title>Hexo</title>
+  <title>Wangazhang's Blog</title>
   
 
 
@@ -132,7 +133,7 @@
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
   
   
@@ -151,12 +152,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
+        <span class="site-title">Wangazhang's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle"></p>
+        <p class="site-subtitle">Deep in , light out.</p>
       
   </div>
 
@@ -182,6 +183,16 @@
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
             Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
           </a>
         </li>
       
@@ -237,7 +248,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Wangazhang's Blog">
     </span>
 
     
@@ -299,39 +310,19 @@
       
         
           
-            <blockquote>
-<p>作者：王章 花名：风男 2016/12/23 16:26:58</p>
-</blockquote>
-<h2 id="编码层级梳理"><a href="#编码层级梳理" class="headerlink" title="编码层级梳理"></a>编码层级梳理</h2><blockquote>
-<p>代码分层而治是对代码进行抽象、管理和维护的最好方法。采用不同的架构设计则有不同分层设计，甚至不同公司也有不同的设计。有的传统企业代码层级只有2层，有的则有多达7层。我们公司由于长时间没有一套完整的方案，且长时间缺乏对这块内容的梳理，因此在代码架构上已经有混淆的嫌疑，且新人小伙伴也缺乏统一的架构认知。因此辑需一套适合我们公司，且能适应后期发展的代码层级架构来统一开发人员的代码编写。下面就分层关系进行总结，换句话说是梳理前人的意图吧</p>
-</blockquote>
-<p>下面就SOA的代码架构进行详细的阐述</p>
-<p>由下至上的分层关系</p>
-<ul>
-<li>第一层：数据层：查询数据操作CRUD（DAO）</li>
-<li>第二层：服务层：数据基本组合</li>
-<li>第三层：业务层：数据复杂逻辑组合</li>
-<li>第四层：第三层的服务包装层 如过滤参数</li>
-<li>第五层：控制层：调度业务系统</li>
-</ul>
-<p>业务介绍：</p>
-<p>红包业务，红包业务由社群红包和聊天红包组成属于不同的两个业务域。</p>
-<ul>
-<li>第一层：数据层</li>
-<li>第二层：服务层</li>
-<li>第三层：业务层</li>
-<li>第四层：第三层的服务包装层 如过滤参数</li>
-<li>第五层：控制层：调度业务系统</li>
-</ul>
-<p>举例（图示）：<br><img src="http://i.imgur.com/BkRo6iw.png" alt=""></p>
-<p><img src="http://i.imgur.com/PJMiMjP.png" alt=""></p>
-<h2 id="关于命名规范"><a href="#关于命名规范" class="headerlink" title="关于命名规范"></a>关于命名规范</h2><p>服务的命名也是需要统一</p>
-<p>第一层：数据层：以Dao结尾<br>第二层：服务层：以Service结尾<br>第三层：业务层：以Business结尾<br>第四层：第三层的Rpc服务包装层:以Facade结尾<br>第五层：控制层：以Ctl结尾</p>
-<h2 id="关于接口规范"><a href="#关于接口规范" class="headerlink" title="关于接口规范"></a>关于接口规范</h2><p>服务的接口也是需要统一 这里特指facade层</p>
-<p>接口应具有单调性<br>接口应具有最少暴露</p>
-<h2 id="关于common-service"><a href="#关于common-service" class="headerlink" title="关于common-service"></a>关于common-service</h2><p>个人认为当服务会被多个业务域使用时，就应该尝试将其下沉为基础服务。如当前的account服务。在设计初期就应该预先设想到该服务的通用性，而决定是否是为common-service</p>
-
           
+作者：王章 花名：风男 2016/12/23 16:26:58
+
+编码层级梳理
+代码分层而治是对代码进行抽象、管理和维护的最好方法。采用不同的架构设计则有不同分层设计，甚至不同公司也有不同的设计。有的传统企业代码层级只有2层，有的则有多达7层。我们公司由于长时间没有一套完整的方案，且长时间缺乏对这
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/16/脸谱架构的问题梳理/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -387,7 +378,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Wangazhang's Blog">
     </span>
 
     
@@ -449,73 +440,23 @@
       
         
           
-            <h1 id="开场问题"><a href="#开场问题" class="headerlink" title="开场问题"></a>开场问题</h1><p>这也是最近发生的一个B-U-G</p>
-<p>现象：过年值班期间，还是大年30晚饭时间，老板约我们值班的一行人去吃年夜饭。</p>
-<p>我们兴高采烈走到饭店楼下，等电梯了，突然接到一个电话。</p>
-<p>好吧，是那个万恶的老蔡！！</p>
-<blockquote>
-<p>‘诶，王章啊，短信收到了吗？’</p>
-<p>‘鱼塘发货吗？ 收到了，收到了！’</p>
-<p>‘是那个没有兑付的短信’</p>
-<p>‘啊？什么付？’</p>
-<p>‘兑付啊’</p>
-<p>‘哦，兑付啊’  此时心里一万个草泥马啊</p>
-</blockquote>
-<p>看了下手机。。。</p>
-<p><img src="https://timgsa.baidu.com/timg?image&amp;quality=80&amp;size=b9999_10000&amp;sec=1487332897577&amp;di=c922cf2159bb4707be1041da738fb967&amp;imgtype=0&amp;src=http%3A%2F%2Fs3.sinaimg.cn%2Fmiddle%2F53a936a5gbcd6ada09662%26690" alt=""></p>
-<p><img src="http://upload.ouliu.net/i/20170217152040jvkfh.jpeg" alt=""></p>
-<p>脸都绿了，果然收到了， 拉上db鹏和蔡食屎就又匆匆回去了。望着老王那些人，心里那个堵啊！</p>
-<p>好吧，我们来看下问题吧</p>
-<p>先介绍下打金融事业部的 颜值理财产品兑付兑付流程：</p>
-<p><img src="http://upload.ouliu.net/i/20170217153706i7jg9.png" alt=""></p>
-<p>我们的理财服务是好的，因为用户都是能购买理财的，而兑付服务也在理财服务上，理论上应该也是正常工作不是吗？？</p>
-<p>思考下有那些环节可能出问题</p>
-<p>那我们首先想到的是定时任务不工作了，然而通过quartz的日志我们发现，还真是工作了！！</p>
-<p><img src="http://upload.ouliu.net/i/20170217160229y0po6.png" alt=""></p>
-<p>那我们继续找下 日志，那到底是发生什么了</p>
-<p><img src="http://upload.ouliu.net/i/20170217160354gmq0j.png" alt=""><br>看下可能是什么问题！！</p>
-<p>细心的小伙伴肯定能关注到这里了。。</p>
-<p><img src="http://upload.ouliu.net/i/20170217160737ow1m9.png" alt=""></p>
-<p>cause: message can not send, because channel is closed？？</p>
-<p>我们再看下调用处java代码！！</p>
-<p><img src="http://upload.ouliu.net/i/20170217162041dz6dv.png" alt=""></p>
-<p>是不是有问题？？是不是有问题？？</p>
-<p><img src="http://upload.ouliu.net/i/201702171621082i6o9.png" alt=""></p>
-<p>cause: message can not send, because channel is closed<br>调用失败：原因是 通道关闭！</p>
-<p>我们知道dubbo发生这个错误的原因基本上都是服务没有启动！有木有？？（ 具体可以参见源码，有时间跟大家分享下dubbo的源码）</p>
-<p>我们看服务是否启动可以在dubbo Admin上去看,这样排查问题确实会比较迅速！</p>
-<p>这个时候我们可以去看dubbo Admin上 finance理财服务是否存在吧？</p>
-<p>上个图，因为现场不在了，所以上个非现场的图</p>
-<p><img src="http://upload.ouliu.net/i/20170217163601tyvj9.png" alt=""></p>
-<p>那这一连串的事，是不是可以串起来告诉我们为什么兑付失败了吧！</p>
-<p>于是我们启动了165服务！然而 事情才解决了一半，还没有恢复兑付呢！！</p>
-<p>不得不夸奖下金融部门的小伙伴啊，不知道是谁想出来的（自己站出来），做了个face-admin平台，这个平台有如下功能</p>
-<p><img src="http://upload.ouliu.net/i/20170217163946vv3rp.jpeg" alt=""></p>
-<p>啊 就在一瞬间啊 我们兑付又愉快的开始了。</p>
-<p>事情到这里，只是开始，难道不是吗？？ 到底为什么机器突然挂了！！！ 我们百思不得其解。。。。</p>
-<p>第二天我们分析了我们finance的内存情况（MAT分析工具），想以此来查找程序中造成异常关闭的蛛丝马迹，结果是毫无破绽！！！</p>
-<p>于是我们开始将我们的目光放在了系统的配置上</p>
-<p>我们先来看下165机器的 一些硬件状态，cpu，硬盘等资源都是正常的不能再正常的，剩下只有内存了！<br>我们先来看几个图</p>
-<p><img src="http://upload.ouliu.net/i/20170217164710c9bg3.png" alt=""></p>
-<p>可用内存 濒临‘灭绝’啊 有木有啊！！</p>
-<p>下面是服务被关闭之后的情况</p>
-<p><img src="http://upload.ouliu.net/i/20170217164735f4rnb.png" alt=""></p>
-<p>那么我们是否可以判断出，内存被无限制的使用，导致操作系统为了维护系统稳定，强制关闭了我们的应用</p>
-<p>带着这个怀疑我们看下 近一个月的系统整体的状态图</p>
-<p><img src="http://upload.ouliu.net/i/20170217165548eb6hf.png" alt=""></p>
-<p>我们看下 这几个区域是不是可以这么假设</p>
-<p>似乎是说的通的哦！</p>
-<p>那么我们来看看 万恶的紧紧们，在我们的tomcat上做了怎么样的配置：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div><div class="line">41</div><div class="line">42</div><div class="line">43</div><div class="line">44</div><div class="line">45</div><div class="line">46</div><div class="line">47</div><div class="line">48</div><div class="line">49</div><div class="line">50</div><div class="line">51</div><div class="line">52</div><div class="line">53</div></pre></td><td class="code"><pre><div class="line">vim /opt/wgj2/wgj-finance/bin/catalina.shCATALINA_OPTS=&quot;-server -Xss512k -Xms8192M -Xmx8192M -Xmn2048M -XX:PermSize=512M -XX:CMSFullGCsBeforeCompaction=0 </div><div class="line">-XX:CMSInitiatingOccupancyFraction=75 -XX:CMSMaxAbortablePrecleanTime=30000 -XX:+UseConcMarkSweepGC -XX:+UseParNewGC -XX:SurvivorRatio=6</div><div class="line">-XX:+PrintGCDetails -XX:+PrintGCDateStamps -XX:+PrintHeapAtGC -Xloggc:/opt/wgj2/wgj-server/logs/gc.log</div><div class="line">-XX:ParallelGCThreads=8 -Djavax.servlet.request.encoding=UTF-8 -Djavax.servlet.response.encoding=UTF-8 -Dfile.encoding=UTF-8</div><div class="line">-Duser.timezone=Asia/Shanghai -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=12346 </div><div class="line">-Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Djava.rmi.server.hostname=192.168.0.165</div><div class="line">-Xdebug -Xnoagent -Xrunjdwp:transport=dt_socket,address=9999,server=y,suspend=n&quot;</div><div class="line"></div><div class="line">cat /proc/meminfo</div><div class="line"></div><div class="line">MemTotal:7963036 kB</div><div class="line">MemFree:  152096 kB</div><div class="line">Buffers:  130768 kB</div><div class="line">Cached:  1685188 kB</div><div class="line">SwapCached:0 kB</div><div class="line">Active:  5338728 kB</div><div class="line">Inactive:2179496 kB</div><div class="line">Active(anon):4431500 kB</div><div class="line">Inactive(anon):  1271408 kB</div><div class="line">Active(file): 907228 kB</div><div class="line">Inactive(file):   908088 kB</div><div class="line">Unevictable:   0 kB</div><div class="line">Mlocked:   0 kB</div><div class="line">SwapTotal:  16515068 kB</div><div class="line">SwapFree:   16515068 kB</div><div class="line">Dirty:  2664 kB</div><div class="line">Writeback: 0 kB</div><div class="line">AnonPages:   5702388 kB</div><div class="line">Mapped: 9808 kB</div><div class="line">Shmem:   524 kB</div><div class="line">Slab: 190996 kB</div><div class="line">SReclaimable: 126280 kB</div><div class="line">SUnreclaim:64716 kB</div><div class="line">KernelStack:   10416 kB</div><div class="line">PageTables:13920 kB</div><div class="line">NFS_Unstable:  0 kB</div><div class="line">Bounce:0 kB</div><div class="line">WritebackTmp:  0 kB</div><div class="line">CommitLimit:20496584 kB</div><div class="line">Committed_AS:7698828 kB</div><div class="line">VmallocTotal:   34359738367 kB</div><div class="line">VmallocUsed:  161408 kB</div><div class="line">VmallocChunk:   34359569276 kB</div><div class="line">HardwareCorrupted: 0 kB</div><div class="line">AnonHugePages:   5545984 kB</div><div class="line">HugePages_Total:   0</div><div class="line">HugePages_Free:0</div><div class="line">HugePages_Rsvd:0</div><div class="line">HugePages_Surp:0</div><div class="line">Hugepagesize:   2048 kB</div><div class="line">DirectMap4k:8192 kB</div><div class="line">DirectMap2M: 1990656 kB</div><div class="line">DirectMap1G: 6291456 kB</div></pre></td></tr></table></figure>
-<p>好吧 这台机器 一共才8个G内存，他们给我们应用也配置了这么大的内存！导致应用不停的去吃内存，到后来达到系统临界值，强制被关闭！！</p>
-<p>醉了醉了~</p>
-<p>至此问题算是早到了，我们又可以让紧紧请客了。</p>
-<p>可恶的是，那天老板以为是我们开发的问题，这个问题你们说是谁的问题？？万恶的紧紧们啊。。。</p>
-<p>但是，我们都是研发中心的 要有集体荣誉感，好吧 当我没说</p>
-<h1 id="事件小结"><a href="#事件小结" class="headerlink" title="事件小结"></a>事件小结</h1><p>事情虽然过去，。。。。。。。。。。。。</p>
-<h1 id="jvm命令解析"><a href="#jvm命令解析" class="headerlink" title="jvm命令解析"></a>jvm命令解析</h1><p>CATALINA_OPTS=”-server -Xss512k -Xms6144M -Xmx6144M<br>-Xmn2048M<br>-XX:PermSize=512M<br>-XX:CMSFullGCsBeforeCompaction=0<br>-XX:CMSInitiatingOccupancyFraction=75<br>-XX:CMSMaxAbortablePrecleanTime=30000<br>-XX:+UseConcMarkSweepGC -XX:+UseParNewGC<br>-XX:SurvivorRatio=6<br>-XX:+PrintGCDetails<br>-XX:+PrintGCDateStamps<br>-XX:+PrintHeapAtGC<br>-Xloggc:/opt/wgj2/wgj-server/logs/gc.log<br>-XX:ParallelGCThreads=8 -Djavax.servlet.request.encoding=UTF-8<br>-Djavax.servlet.response.encoding=UTF-8<br>-Dfile.encoding=UTF-8<br>-Duser.timezone=Asia/Shanghai<br>-Dcom.sun.management.jmxremote<br>-Dcom.sun.management.jmxremote.port=12346<br>-Dcom.sun.management.jmxremote.ssl=false<br>-Dcom.sun.management.jmxremote.authenticate=false<br>-Djava.rmi.server.hostname=192.168.0.165<br>-Xdebug -Xnoagent -Xrunjdwp:transport=dt_socket,address=9999,server=y,suspend=n”</p>
+          开场问题这也是最近发生的一个B-U-G
+现象：过年值班期间，还是大年30晚饭时间，老板约我们值班的一行人去吃年夜饭。
+我们兴高采烈走到饭店楼下，等电梯了，突然接到一个电话。
+好吧，是那个万恶的老蔡！！
 
-          
+‘诶，王章啊，短信收到了吗？’
+‘鱼塘发货吗？ 收到了，收到了！’
+‘是那个没有兑付的短信’
+‘
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/16/关于jvm的那些事（一）/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -571,7 +512,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Wangazhang's Blog">
     </span>
 
     
@@ -633,22 +574,16 @@
       
         
           
-            <h1 id="WHAT"><a href="#WHAT" class="headerlink" title="WHAT"></a>WHAT</h1><p>这个是一个神秘的组织</p>
-<h1 id="WHY"><a href="#WHY" class="headerlink" title="WHY"></a>WHY</h1><p>针对脸谱实际情况，一方面，由于大量的规范，标准，技术革新的推进等停留在小范围，且部分团队在政策和具体落实上存在较大差距。<br>另一方面，群众迫切改造项目的声音，改善生产工具的声音，统一规范的声音，日益凸显。<br>考虑种种可能的原因，亟待产生一支既存在于团队中又能准确get中央思想的先头部队。</p>
-<h1 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h1><p>使徒行者成员 自我要求严格、乐于管理、超强执行力、自我激励、自我影响力</p>
-<h1 id="来源"><a href="#来源" class="headerlink" title="来源"></a>来源</h1><p>各组长推选，来自团队，回归团队</p>
-<h1 id="职责-amp-任务"><a href="#职责-amp-任务" class="headerlink" title="职责&amp;任务"></a>职责&amp;任务</h1><ul>
-<li>后端声音的采集</li>
-<li>管理事项讨论</li>
-<li>管理事项制定</li>
-<li>实施管理内容</li>
-<li>确保管理内容落实</li>
-<li>汇报工作</li>
-</ul>
-<h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>建立一支拥有核心执行力和高能影响力的后端团队<br>应对技术引入、规范引入、策略变更的快速反应</p>
-<h1 id="组织形式"><a href="#组织形式" class="headerlink" title="组织形式"></a>组织形式</h1><p>采用轮班组织和无领导小组讨论的高度自主的组织形式</p>
-
-          
+          WHAT这个是一个神秘的组织
+WHY针对脸谱实际情况，一方面，由于大量的规范，标准，技术革新的推进等停留在小范围，且部分团队在政策和具体落实上存在较大差距。另一方面，群众迫切改造项目的声音，改善生产工具的声音，统一规范的声音，日益凸显。考虑种种可能的原因，亟待产生一支既存在于团队中又能准确get中央
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/16/使徒行者法则/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -704,7 +639,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Wangazhang's Blog">
     </span>
 
     
@@ -766,23 +701,21 @@
       
         
           
-            <h1 id="通知及决定类"><a href="#通知及决定类" class="headerlink" title="通知及决定类"></a>通知及决定类</h1><h2 id="会议流程"><a href="#会议流程" class="headerlink" title="会议流程"></a>会议流程</h2><p><img src="http://upload.ouliu.net/i/20170216151729czw33.png" alt=""></p>
-<h2 id="组织形式"><a href="#组织形式" class="headerlink" title="组织形式"></a>组织形式</h2><p>顺序:王章，唐龙，赵玉龙，蔡伯承，林亦生</p>
-<p>方式：前者组织后者记录</p>
-<p>会必果！</p>
-<h2 id="关于计划"><a href="#关于计划" class="headerlink" title="关于计划"></a>关于计划</h2><p>更有计划的执行开展项目，且需要帮助小伙伴梳理项目，提高他们的项目能力</p>
-<h2 id="关于更好的项目管理工具的探索"><a href="#关于更好的项目管理工具的探索" class="headerlink" title="关于更好的项目管理工具的探索"></a>关于更好的项目管理工具的探索</h2><p>该问题放在下期，主要探索者：蔡伯承</p>
-<h2 id="关于分享不能停的问题"><a href="#关于分享不能停的问题" class="headerlink" title="关于分享不能停的问题"></a>关于分享不能停的问题</h2><p>技术团队缺乏分享=老虎失去锋利的牙齿</p>
-<h2 id="关于对行者团队的支持"><a href="#关于对行者团队的支持" class="headerlink" title="关于对行者团队的支持"></a>关于对行者团队的支持</h2><h2 id="关于调薪的通知"><a href="#关于调薪的通知" class="headerlink" title="关于调薪的通知"></a>关于调薪的通知</h2><p>由于公司上市要求应券商要求需要组织架构的调整，薪资调整问题可能放在3，4月份进行。需要跟自己小伙伴打好招呼！</p>
-<h2 id="内推问题"><a href="#内推问题" class="headerlink" title="内推问题"></a>内推问题</h2><p>3，4月是流动高峰期，需要做好稳定人员工作，同时也要进行内推工作</p>
-<h2 id="慢sql解决"><a href="#慢sql解决" class="headerlink" title="慢sql解决"></a>慢sql解决</h2><p>慢sql 问题，需要给到dba具体解决时间，以免造成信息闭塞</p>
-<h2 id="关于‘回应’"><a href="#关于‘回应’" class="headerlink" title="关于‘回应’"></a>关于‘回应’</h2><h1 id="问题类"><a href="#问题类" class="headerlink" title="问题类"></a>问题类</h1><ul>
-<li>本次支付接入有点仓促</li>
-<li>关于积极性问题的探讨</li>
-<li>关于问题执行结果的探讨</li>
-</ul>
-
-          
+          通知及决定类会议流程
+组织形式顺序:王章，唐龙，赵玉龙，蔡伯承，林亦生
+方式：前者组织后者记录
+会必果！
+关于计划更有计划的执行开展项目，且需要帮助小伙伴梳理项目，提高他们的项目能力
+关于更好的项目管理工具的探索该问题放在下期，主要探索者：蔡伯承
+关于分享不能停的问题技术团队缺乏分享=老虎失去锋利的
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/16/后端重要管理会议纪要（一）/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -838,7 +771,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Wangazhang's Blog">
     </span>
 
     
@@ -900,114 +833,25 @@
       
         
           
-            <h1 id="开场问题"><a href="#开场问题" class="headerlink" title="开场问题"></a>开场问题</h1><blockquote>
-<p>这是最近发生的一个B-U-G</p>
-<p>现象：网红活动期间，忽然各个网页访问变慢，且持续时间不固定，时快时慢</p>
-</blockquote>
-<p><img src="http://i.imgur.com/uE8m9Ta.jpg" alt=""></p>
-<p>再看下请求时间：<br><img src="http://upload.ouliu.net/i/20170209144525blx8j.png" alt=""></p>
-<p><img src="http://upload.ouliu.net/i/20170209144540uutid.png" alt=""><br>初步分析：经过一系列排查，我们把问题锁定在了redis上</p>
-<p>先看下当时 redis 的状态</p>
-<p>看下CPU load：<br><img src="http://upload.ouliu.net/i/201702091441154xfp4.png" alt=""></p>
-<p>飚的还是很嗨的，而且具有一定的周期性</p>
-<p>我们再看下问题起始发生的时间点：<br><img src="http://upload.ouliu.net/i/20170209144705mrlgu.png" alt=""></p>
-<p>根据回忆，这个时间点只执行了一个操作，key的删除。使用的命令如下：</p>
-<p><code>./redis-cli -p 9020 -a xxxyyy SCAN 0 MATCH spring:session:sessions:* COUNT 100000 | xargs ./redis-cli -p 9020 -a xxxyyy DEL</code></p>
-<p>那么是否是该命令造成的问题呢？</p>
-<p>答案是否定的。这条命令会造成短暂的阻塞，但是不足以引起生产环境产生如此往复的状况。</p>
-<p>我们再来看下流量：<br><img src="http://upload.ouliu.net/i/2017020914583295v1q.png" alt=""></p>
-<p>流量出去的异常多！</p>
-<p>我们使用top 命令能看到cpu密集时段会有redis的一个bg程序被开启，这以下让我们想到了 redis 的bgsave。</p>
-<p>我们知道redis的bgsave发生在 主从漂移前的备份复制以及bak机器初始化启动时做的复制。那么为什么会在这个时间段执行且如此的频繁呢。</p>
-<p>我们来回顾下redis的主从复制：</p>
-<p>当我们为一台机器增加一个从节点时，从节点会不管怎么样都会首先进行增量复制，若失败则义无反顾的进行全量复制。</p>
-<p>主要过程大致如下：</p>
-<p>主节点fork出一个子进程，进行bgsave，主线程继续服务。bgsave就是将rdb文件快照文件复制一份，完成后提供给其他从节点进行复制。</p>
-<p>是什么原因让流出那么大呢？</p>
-<p>第一次猜想：</p>
-<p>2个从节点同时进行复制的原因。</p>
-<p>措施：干掉一个</p>
-<p>然而实践表明，并没有什么卵用。</p>
-<p>第二步猜想：</p>
-<p>配置的超时时间不够，造成重复repl？</p>
-<p>我们查看了我们redis的配置发现给予主从同步的时间只有 1分钟！！！！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">53)  &quot;databases&quot;</div><div class="line">54)  &quot;16&quot;</div><div class="line">55)  &quot;repl-ping-slave-period&quot;</div><div class="line">56)  &quot;10&quot;</div><div class="line">57)  &quot;repl-timeout&quot;</div><div class="line">58)  &quot;60&quot; &lt;------ 1分钟的复制超时时间</div></pre></td></tr></table></figure>
-<p>到这里 我们可以不用猜了 。我们果断断开了所有备份节点。修改了同步超时配置。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">53)  &quot;databases&quot;</div><div class="line">54)  &quot;16&quot;</div><div class="line">55)  &quot;repl-ping-slave-period&quot;</div><div class="line">56)  &quot;10&quot;</div><div class="line">57)  &quot;repl-timeout&quot;</div><div class="line">58)  &quot;300&quot; &lt;------ 5分钟的复制超时时间</div></pre></td></tr></table></figure>
-<p>然后，就没有然后了。。</p>
-<p>然而这离问题开始已经过去了N多个小时，洗洗睡了。。。</p>
-<p><img src="http://upload.ouliu.net/i/20170209152627zad48.png" alt=""></p>
-<h1 id="事件小结"><a href="#事件小结" class="headerlink" title="事件小结"></a>事件小结</h1><p>问题是过去了，但是不得不让我们反思下。<br>首先我们回顾下我们的做法，由于我们项目初期redis的使用量只有几个G的大小，而随着redis占用空间越来越大，而配置文件呢还是采用默认配置，这势必会给后面的数据高速增长带来潜在问题。1G rdb文件的传输 1分钟是够的，而10G那就肯定不够了（目前大概30多M每秒）！</p>
-<p>配置文件</p>
-<p>这里抛出一个问题，如何尽可能避免此类问题再次发生？？</p>
-<p>性能相关的数据指标<br>通过Redis-cli命令行界面访问到Redis服务器，然后使用info命令获取所有与Redis服务相关的信息。通过这些信息来分析文章后面提到的一些性能指标。</p>
-<p>info命令输出的数据可分为10个类别，分别是：</p>
-<p>server<br>clients<br>memory<br>persistence<br>stats<br>replication<br>cpu<br>commandstats<br>cluster<br>keyspace<br>这篇主要介绍比较重要的2部分性能指标memory和stats。</p>
-<p>需要注意的是info命令返回的信息，并没有命令响应延迟相关的数据信息，所以后面会详细介绍怎么获取与延迟相关的数据指标。</p>
-<p>倘若你觉得info输出的信息太多并且杂乱无章，可以指定info命令的参数来获取单个分类下的数据。比如输入info memory命令，会只返回与内存相关的数据。</p>
-<p>为了快速定位并解决性能问题，这里选择5个关键性的数据指标，它包含了大多数人在使用Redis上会经常碰到的性能问题。</p>
-<p>内存使用率used_memory<br>上图中used_memory 字段数据表示的是：由Redis分配器分配的内存总量，以字节（byte）为单位。 其中used_memory_human上的数据和used_memory是一样的值，它以M为单位显示，仅为了方便阅读。</p>
-<p>used_memory是Redis使用的内存总量，它包含了实际缓存占用的内存和Redis自身运行所占用的内存(如元数据、lua)。它是由Redis使用内存分配器分配的内存，所以这个数据并没有把内存碎片浪费掉的内存给统计进去。</p>
-<p>其他字段代表的含义，都以字节为单位：</p>
-<p>used_memory_rss：从操作系统上显示已经分配的内存总量。<br>mem_fragmentation_ratio： 内存碎片率。<br>used_memory_lua： Lua脚本引擎所使用的内存大小。<br>mem_allocator： 在编译时指定的Redis使用的内存分配器，可以是libc、jemalloc、tcmalloc。</p>
-<p>因内存交换引起的性能问题</p>
-<p>内存使用率是Redis服务最关键的一部分。如果一个Redis实例的内存使用率超过可用最大内存 (used_memory &gt; 可用最大内存)，那么操作系统开始进行内存与swap空间交换，把内存中旧的或不再使用的内容写入硬盘上（硬盘上的这块空间叫Swap分区），以便腾出新的物理内存给新页或活动页(page)使用。<br>在硬盘上进行读写操作要比在内存上进行读写操作，时间上慢了近5个数量级，内存是0.1μs单位、而硬盘是10ms。如果Redis进程上发生内存交换，那么Redis和依赖Redis上数据的应用会受到严重的性能影响。 通过查看used_memory指标可知道Redis正在使用的内存情况，如果used_memory&gt;可用最大内存，那就说明Redis实例正在进行内存交换或者已经内存交换完毕。管理员根据这个情况，执行相对应的应急措施。</p>
-<p>跟踪内存使用率</p>
-<p>若是在使用Redis期间没有开启rdb快照或aof持久化策略，那么缓存数据在Redis崩溃时就有丢失的危险。因为当Redis内存使用率超过可用内存的95%时，部分数据开始在内存与swap空间来回交换，这时就可能有丢失数据的危险。<br>当开启并触发快照功能时，Redis会fork一个子进程把当前内存中的数据完全复制一份写入到硬盘上。因此若是当前使用内存超过可用内存的45%时触发快照功能，那么此时进行的内存交换会变的非常危险(可能会丢失数据)。 倘若在这个时候实例上有大量频繁的更新操作，问题会变得更加严重。</p>
-<p>通过减少Redis的内存占用率，来避免这样的问题，或者使用下面的技巧来避免内存交换发生：</p>
-<p>假如缓存数据小于4GB，就使用32位的Redis实例。因为32位实例上的指针大小只有64位的一半，它的内存空间占用空间会更少些。 这有一个坏处就是，假设物理内存超过4GB，那么32位实例能使用的内存仍然会被限制在4GB以下。 要是实例同时也共享给其他一些应用使用的话，那可能需要更高效的64位Redis实例，这种情况下切换到32位是不可取的。 不管使用哪种方式，Redis的dump文件在32位和64位之间是互相兼容的， 因此倘若有减少占用内存空间的需求，可以尝试先使用32位，后面再切换到64位上。</p>
-<p>尽可能的使用Hash数据结构。因为Redis在储存小于100个字段的Hash结构上，其存储效率是非常高的。所以在不需要集合(set)操作或list的push/pop操作的时候，尽可能的使用Hash结构。比如，在一个web应用程序中，需要存储一个对象表示用户信息，使用单个key表示一个用户，其每个属性存储在Hash的字段里，这样要比给每个属性单独设置一个key-value要高效的多。 通常情况下倘若有数据使用string结构，用多个key存储时，那么应该转换成单key多字段的Hash结构。 如上述例子中介绍的Hash结构应包含，单个对象的属性或者单个用户各种各样的资料。Hash结构的操作命令是HSET(key, fields, value)和HGET(key, field)，使用它可以存储或从Hash中取出指定的字段。</p>
-<p>设置key的过期时间。一个减少内存使用率的简单方法就是，每当存储对象时确保设置key的过期时间。倘若key在明确的时间周期内使用或者旧key不大可能被使用时，就可以用Redis过期时间命令(expire,expireat, pexpire, pexpireat)去设置过期时间，这样Redis会在key过期时自动删除key。 假如你知道每秒钟有多少个新key-value被创建，那可以调整key的存活时间，并指定阀值去限制Redis使用的最大内存。</p>
-<p>回收key。在Redis配置文件中(一般叫Redis.conf)，通过设置“maxmemory”属性的值可以限制Redis最大使用的内存，修改后重启实例生效。 也可以使用客户端命令config set maxmemory 去修改值，这个命令是立即生效的，但会在重启后会失效，需要使用config rewrite命令去刷新配置文件。 若是启用了Redis快照功能，应该设置“maxmemory”值为系统可使用内存的45%，因为快照时需要一倍的内存来复制整个数据集，也就是说如果当前已使用45%，在快照期间会变成95%(45%+45%+5%)，其中5%是预留给其他的开销。 如果没开启快照功能，maxmemory最高能设置为系统可用内存的95%。</p>
-<p>当内存使用达到设置的最大阀值时，需要选择一种key的回收策略，可在Redis.conf配置文件中修改“maxmemory-policy”属性值。 若是Redis数据集中的key都设置了过期时间，那么“volatile-ttl”策略是比较好的选择。但如果key在达到最大内存限制时没能够迅速过期，或者根本没有设置过期时间。那么设置为“allkeys-lru”值比较合适，它允许Redis从整个数据集中挑选最近最少使用的key进行删除(LRU淘汰算法)。Redis还提供了一些其他淘汰策略，如下：</p>
-<p>volatile-lru：使用LRU算法从已设置过期时间的数据集合中淘汰数据。<br>volatile-ttl：从已设置过期时间的数据集合中挑选即将过期的数据淘汰。<br>volatile-random：从已设置过期时间的数据集合中随机挑选数据淘汰。<br>allkeys-lru：使用LRU算法从所有数据集合中淘汰数据。<br>allkeys-random：从数据集合中任意选择数据淘汰<br>no-enviction：禁止淘汰数据。<br>通过设置maxmemory为系统可用内存的45%或95%(取决于持久化策略)和设置“maxmemory-policy”为“volatile-ttl”或“allkeys-lru”(取决于过期设置)，可以比较准确的限制Redis最大内存使用率，在绝大多数场景下使用这2种方式可确保Redis不会进行内存交换。倘若你担心由于限制了内存使用率导致丢失数据的话，可以设置noneviction值禁止淘汰数据。</p>
-<p>命令处理数total_commands_processed<br>在info信息里的total_commands_processed字段显示了Redis服务处理命令的总数，其命令都是从一个或多个Redis客户端请求过来的。Redis每时每刻都在处理从客户端请求过来的命令，它可以是Redis提供的140种命令的任意一个。 total_commands_processed字段的值是递增的，比如Redis服务分别处理了client_x请求过来的2个命令和client_y请求过来的3个命令，那么命令处理总数(total_commands_processed)就会加上5。</p>
-<p>分析命令处理总数，诊断响应延迟。</p>
-<p>在Redis实例中，跟踪命令处理总数是解决响应延迟问题最关键的部分，因为Redis是个单线程模型，客户端过来的命令是按照顺序执行的。比较常见的延迟是带宽，通过千兆网卡的延迟大约有200μs。倘若明显看到命令的响应时间变慢，延迟高于200μs，那可能是Redis命令队列里等待处理的命令数量比较多。 如上所述，延迟时间增加导致响应时间变慢可能是由于一个或多个慢命令引起的，这时可以看到每秒命令处理数在明显下降，甚至于后面的命令完全被阻塞，导致Redis性能降低。要分析解决这个性能问题，需要跟踪命令处理数的数量和延迟时间。<br>比如可以写个脚本，定期记录total_commands_processed的值。当客户端明显发现响应时间过慢时，可以通过记录的total_commands_processed历史数据值来判断命理处理总数是上升趋势还是下降趋势，以便排查问题。</p>
-<p>使用命令处理总数解决延迟时间增加。</p>
-<p>通过与记录的历史数据比较得知，命令处理总数确实是处于上升或下降状态，那么可能是有2个原因引起的:</p>
-<p>命令队列里的命令数量过多，后面命令一直在等待中。<br>几个慢命令阻塞Redis。<br>下面有三个办法可以解决，因上面2条原因引起的响应延迟问题。</p>
-<p>使用多参数命令：若是客户端在很短的时间内发送大量的命令过来，会发现响应时间明显变慢，这由于后面命令一直在等待队列中前面大量命令执行完毕。有个方法可以改善延迟问题，就是通过单命令多参数的形式取代多命令单参数的形式。举例来说，循环使用LSET命令去添加1000个元素到list结构中，是性能比较差的一种方式，更好的做法是在客户端创建一个1000元素的列表，用单个命令LPUSH或RPUSH，通过多参数构造形式一次性把1000个元素发送的Redis服务上。下面的表格是Redis的一些操作命令，有单个参数命令和支持多个参数的命令，通过这些命令可尽量减少使用多命令的次数。<br>管道命令：另一个减少多命令的方法是使用管道(pipeline)，把几个命令合并一起执行，从而减少因网络开销引起的延迟问题。因为10个命令单独发送到服务端会引起10次网络延迟开销，使用管道会一次性把执行结果返回，仅需要一次网络延迟开销。Redis本身支持管道命令，大多数客户端也支持，倘若当前实例延迟很明显，那么使用管道去降低延迟是非常有效的。</p>
-<p>避免操作大集合的慢命令：如果命令处理频率过低导致延迟时间增加，这可能是因为使用了高时间复杂度的命令操作导致，这意味着每个命令从集合中获取数据的时间增大。 所以减少使用高时间复杂的命令，能显著的提高的Redis的性能。下面的表格是高时间复杂度命令的列表，其详细描述了命令的属性，有这助于高效合理的、最优化的使用这些命令(如果不得不使用的话)，以提高Redis性能。</p>
-<p>延迟时间<br>Redis的延迟数据是无法从info信息中获取的。倘若想要查看延迟时间，可以用 Redis-cli工具加–latency参数运行，如:</p>
-<p>Redis-cli –latency -h 127.0.0.1 -p 6379<br>其host和port是Redis实例的ip及端口。由于当前服务器不同的运行情况，延迟时间可能有所误差，通常1G网卡的延迟时间是200μs。</p>
-<p>以毫秒为单位测量Redis的响应延迟时间，楼主本机的延迟是300μs：</p>
-<p>跟踪Redis延迟性能</p>
-<p>Redis之所以这么流行的主要原因之一就是低延迟特性带来的高性能，所以说解决延迟问题是提高Redis性能最直接的办法。拿1G带宽来说，若是延迟时间远高于200μs，那明显是出现了性能问题。 虽然在服务器上会有一些慢的IO操作，但Redis是单核接受所有客户端的请求，所有请求是按良好的顺序排队执行。因此若是一个客户端发过来的命令是个慢操作，那么其他所有请求必须等待它完成后才能继续执行。</p>
-<p>使用延迟命令提高性能</p>
-<p>一旦确定延迟时间是个性能问题后，这里有几个办法可以用来分析解决性能问题。</p>
-<p>使用slowlog查出引发延迟的慢命令：Redis中的slowlog命令可以让我们快速定位到那些超出指定执行时间的慢命令，默认情况下命令若是执行时间超过10ms就会被记录到日志。slowlog只会记录其命令执行的时间，不包含io往返操作，也不记录单由网络延迟引起的响应慢。通常1gb带宽的网络延迟，预期在200μs左右，倘若一个命令仅执行时间就超过10ms，那比网络延迟慢了近50倍。 想要查看所有执行时间比较慢的命令，可以通过使用Redis-cli工具，输入slowlog get命令查看，返回结果的第三个字段以微妙位单位显示命令的执行时间。假如只需要查看最后10个慢命令，输入slowlog get 10即可。 关于怎么定位到是由慢命令引起的延迟问题，可查看total_commands_processed介绍章节。<br>图中字段分别意思是：</p>
-<p>1=日志的唯一标识符<br>2=被记录命令的执行时间点，以 UNIX 时间戳格式表示<br>3=查询执行时间，以微秒为单位。例子中命令使用54毫秒。<br>4= 执行的命令，以数组的形式排列。完整命令是config get *。<br>倘若你想自定义慢命令的标准，可以调整触发日志记录慢命令的阀值。若是很少或没有命令超过10ms，想降低记录的阀值，比如5毫秒，可在Redis-cli工具中输入下面的命令配置：</p>
-<p>config set slowlog-log-slower-than 5000<br>也可以在Redis.config配置文件中设置，以微妙位单位。</p>
-<p>2.监控客户端的连接：因为Redis是单线程模型(只能使用单核)，来处理所有客户端的请求， 但由于客户端连接数的增长，处理请求的线程资源开始降低分配给单个客户端连接的处理时间，这时每个客户端需要花费更多的时间去等待Redis共享服务的响应。这种情况下监控客户端连接数是非常重要的，因为客户端创建连接数的数量可能超出预期的数量，也可能是客户端端没有有效的释放连接。在Redis-cli工具中输入info clients可以查看到当前实例的所有客户端连接信息。如下图，第一个字段(connected_clients)显示当前实例客户端连接的总数：</p>
-<p>Redis默认允许客户端连接的最大数量是10000。若是看到连接数超过5000以上，那可能会影响Redis的性能。倘若一些或大部分客户端发送大量的命令过来，这个数字会低的多。</p>
-<p>3.限制客户端连接数：自Redis2.6以后，允许使用者在配置文件(Redis.conf)maxclients属性上修改客户端连接的最大数，也可以通过在Redis-cli工具上输入config set maxclients 去设置最大连接数。根据连接数负载的情况，这个数字应该设置为预期连接数峰值的110%到150之间，若是连接数超出这个数字后，Redis会拒绝并立刻关闭新来的连接。通过设置最大连接数来限制非预期数量的连接数增长，是非常重要的。另外，新连接尝试失败会返回一个错误消息，这可以让客户端知道，Redis此时有非预期数量的连接数，以便执行对应的处理措施。 上述二种做法对控制连接数的数量和持续保持Redis的性能最优是非常重要的，</p>
-<p>4.加强内存管理：较少的内存会引起Redis延迟时间增加。如果Redis占用内存超出系统可用内存，操作系统会把Redis进程的一部分数据，从物理内存交换到硬盘上，内存交换会明显的增加延迟时间。关于怎么监控和减少内存使用，可查看used_memory介绍章节。</p>
-<p>性能数据指标：<br>分析解决Redis性能问题，通常需要把延迟时间的数据变化与其他性能指标的变化相关联起来。命令处理总数下降的发生可能是由慢命令阻塞了整个系统，但如果命令处理总数的增加，同时内存使用率也增加，那么就可能是由于内存交换引起的性能问题。对于这种性能指标相关联的分析，需要从历史数据上来观察到数据指标的重要变化，此外还可以观察到单个性能指标相关联的所有其他性能指标信息。这些数据可以在Redis上收集，周期性的调用内容为Redis info的脚本，然后分析输出的信息，记录到日志文件中。当延迟发生变化时，用日志文件配合其他数据指标，把数据串联起来排查定位问题。</p>
-<p>内存碎片率<br>info信息中的mem_fragmentation_ratio给出了内存碎片率的数据指标，它是由操系统分配的内存除以Redis分配的内存得出：</p>
-<p>used_memory和used_memory_rss数字都包含的内存分配有：</p>
-<p>用户定义的数据：内存被用来存储key-value值。<br>内部开销： 存储内部Redis信息用来表示不同的数据类型。<br>used_memory_rss的rss是Resident Set Size的缩写，表示该进程所占物理内存的大小，是操作系统分配给Redis实例的内存大小。除了用户定义的数据和内部开销以外，used_memory_rss指标还包含了内存碎片的开销，内存碎片是由操作系统低效的分配/回收物理内存导致的。<br>操作系统负责分配物理内存给各个应用进程，Redis使用的内存与物理内存的映射是由操作系统上虚拟内存管理分配器完成的。<br>举个例子来说，Redis需要分配连续内存块来存储1G的数据集，这样的话更有利，但可能物理内存上没有超过1G的连续内存块，那操作系统就不得不使用多个不连续的小内存块来分配并存储这1G数据，也就导致内存碎片的产生。<br>内存分配器另一个复杂的层面是，它经常会预先分配一些内存块给引用，这样做会使加快应用程序的运行。</p>
-<p>理解资源性能</p>
-<p>跟踪内存碎片率对理解Redis实例的资源性能是非常重要的。内存碎片率稍大于1是合理的，这个值表示内存碎片率比较低，也说明redis没有发生内存交换。但如果内存碎片率超过1.5，那就说明Redis消耗了实际需要物理内存的150%，其中50%是内存碎片率。若是内存碎片率低于1的话，说明Redis内存分配超出了物理内存，操作系统正在进行内存交换。内存交换会引起非常明显的响应延迟，可查看used_memory介绍章节。</p>
-<p>上图中的0.99即99%。</p>
-<p>用内存碎片率预测性能问题</p>
-<p>倘若内存碎片率超过了1.5，那可能是操作系统或Redis实例中内存管理变差的表现。下面有3种方法解决内存管理变差的问题，并提高Redis性能：</p>
-<p>重启Redis服务器：如果内存碎片率超过1.5，重启Redis服务器可以让额外产生的内存碎片失效并重新作为新内存来使用，使操作系统恢复高效的内存管理。额外碎片的产生是由于Redis释放了内存块，但内存分配器并没有返回内存给操作系统，这个内存分配器是在编译时指定的，可以是libc、jemalloc或者tcmalloc。 通过比较used_memory_peak, used_memory_rss和used_memory_metrics的数据指标值可以检查额外内存碎片的占用。从名字上可以看出，used_memory_peak是过去Redis内存使用的峰值，而不是当前使用内存的值。如果used_memory_peak和used_memory_rss的值大致上相等，而且二者明显超过了used_memory值，这说明额外的内存碎片正在产生。 在Redis-cli工具上输入info memory可以查看上面三个指标的信息：<br>在重启服务器之前，需要在Redis-cli工具上输入shutdown save命令，意思是强制让Redis数据库执行保存操作并关闭Redis服务，这样做能保证在执行Redis关闭时不丢失任何数据。 在重启后，Redis会从硬盘上加载持久化的文件，以确保数据集持续可用。</p>
-<p>2.限制内存交换： 如果内存碎片率低于1，Redis实例可能会把部分数据交换到硬盘上。内存交换会严重影响Redis的性能，所以应该增加可用物理内存或减少实Redis内存占用。 可查看used_memory章节的优化建议。</p>
-<p>3.修改内存分配器：<br>Redis支持glibc’s malloc、jemalloc11、tcmalloc几种不同的内存分配器，每个分配器在内存分配和碎片上都有不同的实现。不建议普通管理员修改Redis默认内存分配器，因为这需要完全理解这几种内存分配器的差异，也要重新编译Redis。这个方法更多的是让其了解Redis内存分配器所做的工作，当然也是改善内存碎片问题的一种办法。</p>
-<p>回收key<br>info信息中的evicted_keys字段显示的是，因为maxmemory限制导致key被回收删除的数量。关于maxmemory的介绍见前面章节，回收key的情况只会发生在设置maxmemory值后，不设置会发生内存交换。 当Redis由于内存压力需要回收一个key时，Redis首先考虑的不是回收最旧的数据，而是在最近最少使用的key或即将过期的key中随机选择一个key，从数据集中删除。</p>
-<p>这可以在配置文件中设置maxmemory-policy值为“volatile-lru”或“volatile-ttl”，来确定Redis是使用lru策略还是过期时间策略。 倘若所有的key都有明确的过期时间，那过期时间回收策略是比较合适的。若是没有设置key的过期时间或者说没有足够的过期key，那设置lru策略是比较合理的，这可以回收key而不用考虑其过期状态。</p>
-<p>根据key回收定位性能问题</p>
-<p>跟踪key回收是非常重要的，因为通过回收key，可以保证合理分配Redis有限的内存资源。如果evicted_keys值经常超过0，那应该会看到客户端命令响应延迟时间增加，因为Redis不但要处理客户端过来的命令请求，还要频繁的回收满足条件的key。<br>需要注意的是，回收key对性能的影响远没有内存交换严重，若是在强制内存交换和设置回收策略做一个选择的话，选择设置回收策略是比较合理的，因为把内存数据交换到硬盘上对性能影响非常大(见前面章节)。</p>
-<p>减少回收key以提升性能</p>
-<p>减少回收key的数量是提升Redis性能的直接办法，下面有2种方法可以减少回收key的数量：</p>
-<p>1.增加内存限制：倘若开启快照功能，maxmemory需要设置成物理内存的45%，这几乎不会有引发内存交换的危险。若是没有开启快照功能，设置系统可用内存的95%是比较合理的，具体参考前面的快照和maxmemory限制章节。如果maxmemory的设置是低于45%或95%(视持久化策略)，通过增加maxmemory的值能让Redis在内存中存储更多的key，这能显著减少回收key的数量。 若是maxmemory已经设置为推荐的阀值后，增加maxmemory限制不但无法提升性能，反而会引发内存交换，导致延迟增加、性能降低。 maxmemory的值可以在Redis-cli工具上输入config set maxmemory命令来设置。<br>需要注意的是，这个设置是立即生效的，但重启后丢失，需要永久化保存的话，再输入config rewrite命令会把内存中的新配置刷新到配置文件中。</p>
-<p>2.对实例进行分片：分片是把数据分割成合适大小，分别存放在不同的Redis实例上，每一个实例都包含整个数据集的一部分。通过分片可以把很多服务器联合起来存储数据，相当于增加总的物理内存，使其在没有内存交换和回收key的策略下也能存储更多的key。假如有一个非常大的数据集，maxmemory已经设置，实际内存使用也已经超过了推荐设置的阀值，那通过数据分片能明显减少key的回收，从而提高Redis的性能。 分片的实现有很多种方法，下面是Redis实现分片的几种常见方式：</p>
-<p>a. Hash分片：一个比较简单的方法实现，通过Hash函数计算出key的Hash值，然后值所在范围对应特定的Redis实例。<br>b. 代理分片：客户端把请求发送到代理上，代理通过分片配置表选择对应的Redis实例。 如Twitter的Twemproxy，豌豆荚的codis。<br>c. 一致性Hash分片： 参见前面博客《一致性Hash分片详解》<br>d. 虚拟桶分片：参见前面博客《虚拟桶分详解》</p>
-<p>总结<br>对于开发者来说，Redis是个速度非常快的key-value内存数据库，并提供了方便的API接口。为了最好最优的使用Redis，需要理解哪些因素能影响到Redis性能，哪些数据指标能帮助我们避免性能陷阱。 通过本篇，能理解Redis中的重要性能指标，怎么查看，更重要的是怎么利用这些数据排查解决Redis性能问题。</p>
-<p>本篇博客主要翻译了一电子书的中间15页，电子书地址是<br><code>https://www.datadoghq.com/wp-content/uploads/2013/09/Understanding-the-Top-5-Redis-Performance-Metrics.pdf。</code></p>
+          开场问题
+这是最近发生的一个B-U-G
+现象：网红活动期间，忽然各个网页访问变慢，且持续时间不固定，时快时慢
 
-          
+
+再看下请求时间：
+初步分析：经过一系列排查，我们把问题锁定在了redis上
+先看下当时 redis 的状态
+看下CPU load：
+飚的还是很嗨的，而且具有一定的周期性
+我们再看下问题起
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2017/02/16/关于redis的那些事（一）/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1063,7 +907,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Hexo">
+      <meta itemprop="name" content="Wangazhang's Blog">
     </span>
 
     
@@ -1125,14 +969,21 @@
       
         
           
-            <blockquote>
-<p>理财服务横跨多个服务，如颜值服务，支付服务，订单服务等等。在基于稳定和性能的基础上，基于二段式事务，和补偿事务，实现了高可用的理财服务。</p>
-</blockquote>
-<h2 id="表设计"><a href="#表设计" class="headerlink" title="表设计"></a>表设计</h2><p><img src="http://onaqzli6n.bkt.clouddn.com/15024140017080.jpg" alt=""><br><img src="http://onaqzli6n.bkt.clouddn.com/15024147563101.jpg" alt=""><br><img src="http://onaqzli6n.bkt.clouddn.com/15024147834604.jpg" alt=""><br><img src="http://onaqzli6n.bkt.clouddn.com/15024148032280.jpg" alt=""><br><img src="http://onaqzli6n.bkt.clouddn.com/15024148220078.jpg" alt=""><br><img src="http://onaqzli6n.bkt.clouddn.com/15024148378365.jpg" alt=""><br><img src="http://onaqzli6n.bkt.clouddn.com/15024148506593.jpg" alt=""></p>
-<h2 id="流程图"><a href="#流程图" class="headerlink" title="流程图"></a>流程图</h2><p><img src="http://onaqzli6n.bkt.clouddn.com/15024141032518.jpg" alt=""></p>
-<h2 id="定时任务流程"><a href="#定时任务流程" class="headerlink" title="定时任务流程"></a>定时任务流程</h2><p><img src="http://onaqzli6n.bkt.clouddn.com/15032851998592.jpg" alt=""></p>
+          
+理财服务横跨多个服务，如颜值服务，支付服务，订单服务等等。在基于稳定和性能的基础上，基于二段式事务，和补偿事务，实现了高可用的理财服务。
+
+表设计
+流程图
+定时任务流程
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2016/10/11/基于分布式事务的理财分布式事务设计/#more" rel="contents">
+              Weiterlesen &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -1228,10 +1079,10 @@
               
               
               <div class="site-state-item site-state-tags">
-                
+                <a href="/tags/index.html">
                   <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">Tags</span>
-                
+                </a>
               </div>
             
 
