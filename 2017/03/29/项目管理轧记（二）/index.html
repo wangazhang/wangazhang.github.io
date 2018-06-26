@@ -1,0 +1,658 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.3" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png?v=5.1.3">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png?v=5.1.3">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.3" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="管理及管理技术  管理的最终目的是提升企业经营效益  这句话反过来也是成立的，即：要提升企业经营效益，必须强化企业管理能力。 管理最终的目的是服务于企业效益，只不过在提升效益的时候，有很多的环节，所以我们将管理工作按照企业运营环节的不同，划分出了诸如人力管理、财务管理、行政管理、研发管理等等。 当企业规模非常小或者较原始的时期，管理只需要老板一个人来做，随着企业规模逐渐增大、工序逐渐增多时，才需要">
+<meta property="og:type" content="article">
+<meta property="og:title" content="项目管理轧记（二）">
+<meta property="og:url" content="http://yoursite.com/2017/03/29/项目管理轧记（二）/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="管理及管理技术  管理的最终目的是提升企业经营效益  这句话反过来也是成立的，即：要提升企业经营效益，必须强化企业管理能力。 管理最终的目的是服务于企业效益，只不过在提升效益的时候，有很多的环节，所以我们将管理工作按照企业运营环节的不同，划分出了诸如人力管理、财务管理、行政管理、研发管理等等。 当企业规模非常小或者较原始的时期，管理只需要老板一个人来做，随着企业规模逐渐增大、工序逐渐增多时，才需要">
+<meta property="og:image" content="http://onaqzli6n.bkt.clouddn.com/14907799150101.jpg">
+<meta property="og:image" content="http://onaqzli6n.bkt.clouddn.com/14907801506194.jpg">
+<meta property="og:image" content="http://onaqzli6n.bkt.clouddn.com/14907801741199.jpg">
+<meta property="og:updated_time" content="2018-06-25T07:45:18.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="项目管理轧记（二）">
+<meta name="twitter:description" content="管理及管理技术  管理的最终目的是提升企业经营效益  这句话反过来也是成立的，即：要提升企业经营效益，必须强化企业管理能力。 管理最终的目的是服务于企业效益，只不过在提升效益的时候，有很多的环节，所以我们将管理工作按照企业运营环节的不同，划分出了诸如人力管理、财务管理、行政管理、研发管理等等。 当企业规模非常小或者较原始的时期，管理只需要老板一个人来做，随着企业规模逐渐增大、工序逐渐增多时，才需要">
+<meta name="twitter:image" content="http://onaqzli6n.bkt.clouddn.com/14907799150101.jpg">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.3',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2017/03/29/项目管理轧记（二）/"/>
+
+
+
+
+
+  <title>项目管理轧记（二） | Hexo</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Hexo</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2017/03/29/项目管理轧记（二）/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="wangazhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Hexo">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">项目管理轧记（二）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Veröffentlicht am</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2017-03-29T15:39:12+08:00">
+                2017-03-29
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>管理及管理技术</p>
+<blockquote>
+<p>管理的最终目的是提升企业经营效益</p>
+</blockquote>
+<p>这句话反过来也是成立的，即：要提升企业经营效益，必须强化企业管理能力。</p>
+<p>管理最终的目的是服务于企业效益，只不过在提升效益的时候，有很多的环节，所以我们将管理工作按照企业运营环节的不同，划分出了诸如人力管理、财务管理、行政管理、研发管理等等。</p>
+<p>当企业规模非常小或者较原始的时期，管理只需要老板一个人来做，随着企业规模逐渐增大、工序逐渐增多时，才需要增加更多的管理岗位，用于进行不同方向和职能事务的处理。</p>
+<blockquote>
+<p>职能重构：将职能按照企业需求重新划分的方法，是最简单的管理技能运用。<br>这里的职能分类会有很多种，如地域、领域、产线等等。</p>
+</blockquote>
+<p>我们经常可以看到各个公司按区域、产品线、研发方向等来划分多个部门，并且随着公司的发展阶段，会经常进行调整，此处所使用的就是管理的最基础技能，我把它称之为<code>职能重构技术</code>。</p>
+<p><code>职能重构</code>是不是很像“代码重构”？没错，就像编程一样，根据现阶段企业要求，将现有的组织结构进行调整，使用“封装”和“解耦”的方式，将企业各部门进行重组，最终服务于企业需求。</p>
+<p>“职能重构”技术是最古老、最简单、最基础的管理技术，如果运用得好，对企业带来的效益绝对是非常可观的。很多企业内部管理混乱，各部门协调不好，都是“职能重构”应用得不好所导致，要尽量让“公鸡做公鸡的事，母鸡做母鸡的事”。</p>
+<p>“职能重构”用于解决企业组织结构划分的问题，从最初的金字塔结构，到现在的扁平化管理结构，都是职能重构技术的实际应用。<br><img src="http://onaqzli6n.bkt.clouddn.com/14907799150101.jpg" alt=""></p>
+<p>在这里，我们后续重点针对的是矩阵式结构进行项目管理技术的应用，其他的结构划分大家可以自行百度了解，不会在后续对相关内容进行说明</p>
+<blockquote>
+<p>管理是将无序变有序，将混沌变清晰的过程。</p>
+</blockquote>
+<p>企业管理最重要的一点是将将管理工作从无序变有序，从混沌变清晰的过程，而现代企业管理技术更加强调的一点是量化管理。所有的管理技术都围绕上述几点展开。</p>
+<p>通过“职能重构”我们将企业组织结构和职责清晰化之后，接下来则是对组织过程管理的清晰化和数据化。</p>
+<p>组织过程管理主要包括两大类：人和事。这里的人是服务于事的，人是由于事情而存在的，因此，最终会归结为对事的管理，而企业中的事项均可以划分为“项目”，即企业的工作均是围绕一个个项目展开的。这里的项目是指广义上的项目，不仅仅是客户项目，而是包含所有日常事务，诸如组织一次培训、发放一个月的薪水、公司搬家和制定一份财务报表等，都可以纳入到项目的范畴。</p>
+<blockquote>
+<p>项目管理是对过程的管理。</p>
+</blockquote>
+<p>项目管理需要划分项目执行的各个过程及过程职责（无序到有序的过程），一般的项目过程均会包含如下几个阶段：<br><img src="http://onaqzli6n.bkt.clouddn.com/14907801506194.jpg" alt=""></p>
+<p>每一个项目过程的执行都离不开输入内容、过程执行和输出产物三部分（数据量化过程）：<br><img src="http://onaqzli6n.bkt.clouddn.com/14907801741199.jpg" alt=""></p>
+<p>这里的过程划分方式、过程管理方式均可以归类为项目管理硬性技术</p>
+<blockquote>
+<p>项目管理技术可以划分为硬性技术和软性技术。硬性技术通常是指可以通过培训、学习等方式学会和掌握的；软性技术通常是对管理者自身性格、为人处世方面的要求，无法快速学会并运用的能力。</p>
+</blockquote>
+<p>硬性技术的掌握可以使管理者达到合格的程度，即一个管理者只要掌握具体的管理技术和方法，并付诸实施和跟踪，通常情况下可以适合对应的管理岗位的要求。</p>
+<p>软性技术是管理者为人处世的方式和方法，其决定了管理者可以晋升的空间，不是我们这里讲解的内容。</p>
+<hr>
+<p>总结：我们在这里讲了管理的目的、企业组织结构的分类和项目管理的重要性，提到了组织结构划分的技术—职能重构，提到了项目管理的5大过程和过程管理的基本思路，明确了项目管理技术重点在于强调硬性管理技能，后续章节我们会围绕项目管理的5大过程，讲解硬性技能在5大过程中的应用。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2017/03/28/基于dubbo的平滑部署设计/" rel="next" title="基于dubbo的平滑部署设计">
+                <i class="fa fa-chevron-left"></i> 基于dubbo的平滑部署设计
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2017/03/31/oneWordEveryDay/" rel="prev" title="oneWordEveryDay">
+                oneWordEveryDay <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">wangazhang</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">Artikel</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-name">Tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          <div class="links-of-author motion-element">
+            
+          </div>
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">wangazhang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Erstellt mit  <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.3</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.3"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.3"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.3"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.3"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
