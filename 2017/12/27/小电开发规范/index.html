@@ -94,7 +94,7 @@
 <meta property="og:image" content="http://onaqzli6n.bkt.clouddn.com/15144524766765.jpg">
 <meta property="og:image" content="http://onaqzli6n.bkt.clouddn.com/15155747128103.jpg">
 <meta property="og:image" content="http://onaqzli6n.bkt.clouddn.com/15155749052359.jpg">
-<meta property="og:updated_time" content="2018-06-26T05:20:21.000Z">
+<meta property="og:updated_time" content="2018-07-02T03:23:47.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="营收开发规范">
 <meta name="twitter:description" content="排版支持不够全面，建议使用此链接打开 [toc] 1 代码规范1.1 VO返回格式 前端伪代码： 1234567891011121314//成功if(result.success)&amp;#123;	//dosomething	location=result.data.url;	return;&amp;#125;//失败if(!result.success)&amp;#123;	switch (result.code)">
@@ -329,11 +329,15 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"></div><div class="line"></div></pre></td></tr></table></figure>
 <h3 id="1-2-数据接收和发送格式"><a href="#1-2-数据接收和发送格式" class="headerlink" title="1.2 数据接收和发送格式"></a>1.2 数据接收和发送格式</h3><p>统一使用json格式做为输入输出格式</p>
 <h3 id="1-3-错误码定义"><a href="#1-3-错误码定义" class="headerlink" title="1.3 错误码定义"></a>1.3 错误码定义</h3><p>定义错误码类 为枚举<br><img src="http://onaqzli6n.bkt.clouddn.com/15153818804005.jpg" alt=""></p>
-<h3 id="1-4-异常处理"><a href="#1-4-异常处理" class="headerlink" title="1.4 异常处理"></a>1.4 异常处理</h3><ul>
-<li>业务异常使用自定义Exception，继承BaseException</li>
-<li>非业务异常，直接打印</li>
-<li>异常抛出由统一的异常处理器ExceptionHandler包装处理</li>
+<h3 id="1-4-异常处理"><a href="#1-4-异常处理" class="headerlink" title="1.4 异常处理"></a>1.4 异常处理</h3><p>异常抛出由统一的异常处理器ExceptionHandler包装处理，分为以下两类</p>
+<ul>
+<li>业务异常</li>
 </ul>
+<p>使用BizException，错误详情使用枚举 ，不打印堆栈</p>
+<ul>
+<li>非业务异常（运行时异常）</li>
+</ul>
+<p>全局异常捕捉后直接打印，统一输出到error.log,方便后续持续排查</p>
 <h3 id="1-5-日志打印规范"><a href="#1-5-日志打印规范" class="headerlink" title="1.5 日志打印规范"></a>1.5 日志打印规范</h3><ul>
 <li>携带业务前缀及检索参数</li>
 </ul>
@@ -395,7 +399,7 @@
 <li>git分支说明</li>
 <li>其他说明</li>
 </ul>
-<h2 id="6-分支规范"><a href="#6-分支规范" class="headerlink" title="6 分支规范"></a>6 分支规范</h2><p>只有local、dev、master分支<br>其中local为本地的分支，dev，master为仓库分支</p>
+<h2 id="6-分支规范"><a href="#6-分支规范" class="headerlink" title="6 分支规范"></a>6 分支规范</h2><p>只有local、dev、master分支<br>其中local为本地的分支，dev，master为仓库分支<br>dev    作为开发集成环境<br>test   作为测试环境<br>master 作为real环境</p>
 <h2 id="7-流程规范"><a href="#7-流程规范" class="headerlink" title="7 流程规范"></a>7 流程规范</h2><h3 id="7-1-项目流程"><a href="#7-1-项目流程" class="headerlink" title="7.1 项目流程"></a>7.1 项目流程</h3><p><img src="http://onaqzli6n.bkt.clouddn.com/15144524766765.jpg" alt=""></p>
 <h3 id="7-2-编码要求"><a href="#7-2-编码要求" class="headerlink" title="7.2 编码要求"></a>7.2 编码要求</h3><h4 id="7-2-1-代码编写后使用阿里巴巴代码规范插件review"><a href="#7-2-1-代码编写后使用阿里巴巴代码规范插件review" class="headerlink" title="7.2.1 代码编写后使用阿里巴巴代码规范插件review"></a>7.2.1 代码编写后使用阿里巴巴代码规范插件review</h4><p><img src="http://onaqzli6n.bkt.clouddn.com/15155747128103.jpg" alt=""></p>
 <p>对工程右击，规约扫描<br><img src="http://onaqzli6n.bkt.clouddn.com/15155749052359.jpg" alt=""></p>
